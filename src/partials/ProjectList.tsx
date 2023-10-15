@@ -6,13 +6,15 @@ import {
   Tags,
 } from 'astro-boilerplate-components';
 
+import styles from '../styles/hero.module.css';
+
 const ProjectList = () => (
   <Section
     title={
       <>
         Recent <GradientText>Projects</GradientText>
         <br />
-        <p className="title-metadata">
+        <p className={styles.titleMetadata}>
           Since I work at a bank, everything is highly regulated and private. So
           I will not be able to give links to my current work.
         </p>
