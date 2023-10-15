@@ -5,6 +5,8 @@ import {
   Section,
 } from 'astro-boilerplate-components';
 
+import { MAIN_HERO_DATA } from '@/pages/page-data/main-hero';
+
 const Hero = () => (
   <Section>
     <HeroAvatar
@@ -13,30 +15,24 @@ const Hero = () => (
           Hi there, I'm <GradientText>Quin Carter!</GradientText> 👋
         </>
       }
-      description={
-        <>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus{' '}
-          <a className="text-cyan-400 hover:underline" href="/">
-            malesuada
-          </a>{' '}
-          nisi tellus, non imperdiet nisi tempor at. Lorem ipsum dolor sit amet,{' '}
-          <a className="text-cyan-400 hover:underline" href="/">
-            consectetur
-          </a>{' '}
-          adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.
-        </>
-      }
+      description={MAIN_HERO_DATA.description}
       avatar={
         <img
-          className="h-80 w-64"
-          src="/assets/images/avatar.svg"
+          className="w-64"
+          src="/assets/images/avatar.png"
           alt="Avatar image"
           loading="lazy"
         />
       }
       socialButtons={
         <>
-          <a href="/">
+          <a href="https://www.linkedin.com/in/quincarter/" target="_blank">
+            <HeroSocial
+              src="/assets/images/linkedin-icon.png"
+              alt="Linkedin icon"
+            />
+          </a>
+          <a href="">
             <HeroSocial
               src="/assets/images/twitter-icon.png"
               alt="Twitter icon"
@@ -46,12 +42,6 @@ const Hero = () => (
             <HeroSocial
               src="/assets/images/facebook-icon.png"
               alt="Facebook icon"
-            />
-          </a>
-          <a href="/">
-            <HeroSocial
-              src="/assets/images/linkedin-icon.png"
-              alt="Linkedin icon"
             />
           </a>
           <a href="/">

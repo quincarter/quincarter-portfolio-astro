@@ -28,13 +28,15 @@ const Navbar = () => (
               <path d="M4 20h14"></path>
             </svg>
           }
-          name="Quin Carter's Blog"
+          name="Quin Carter's Portfolio"
         />
       </a>
 
       <NavMenu>
         <NavMenuItem href="/posts/">Blogs</NavMenuItem>
-        <NavMenuItem href="/">GitHub</NavMenuItem>
+        <NavMenuItem href="https://github.com/quincarter" target="_blank">
+          GitHub
+        </NavMenuItem>
         <NavMenuItem href="/">Twitter</NavMenuItem>
       </NavMenu>
     </NavbarTwoColumns>
