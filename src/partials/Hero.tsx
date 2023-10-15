@@ -15,7 +15,17 @@ const Hero = () => (
           Hi there, I'm <GradientText>Quin Carter!</GradientText> 👋
         </>
       }
-      description={MAIN_HERO_DATA.description}
+      description={
+        <>
+          {MAIN_HERO_DATA.description}
+          <br />
+          <br />I have focused on many different technologies over the course of
+          my career, but Frontend Engineering is by far my favorite technology
+          to work on. I am a JavaScript/TypeScript Developer first and foremost,
+          but I have worked on everything under the sun when it comes to
+          engineering.
+        </>
+      }
       avatar={
         <img
           className="w-64"
