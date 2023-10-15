@@ -6,7 +6,7 @@ import {
   Tags,
 } from 'astro-boilerplate-components';
 
-import styles from '../styles/hero.module.css';
+import styles from '../styles/project-list.module.css';
 
 const ProjectList = () => (
   <Section
