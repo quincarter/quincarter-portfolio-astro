@@ -7,6 +7,8 @@ import {
 
 import { MAIN_HERO_DATA } from '@/pages/page-data/main-hero';
 
+import styles from '../styles/hero.module.css';
+
 const Hero = () => (
   <Section>
     <HeroAvatar
@@ -16,7 +18,7 @@ const Hero = () => (
         </>
       }
       description={
-        <>
+        <p className={styles.mainSchpeel}>
           {MAIN_HERO_DATA.description}
           <br />
           <br />I have focused on many different technologies over the course of
@@ -24,7 +26,7 @@ const Hero = () => (
           to work on. I am a JavaScript/TypeScript Developer first and foremost,
           but I have worked on everything under the sun when it comes to
           engineering.
-        </>
+        </p>
       }
       avatar={
         <img
