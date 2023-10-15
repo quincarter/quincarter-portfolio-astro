@@ -1,3 +1,5 @@
+import '../styles/projects.css';
+
 import {
   ColorTags,
   GradientText,
@@ -21,7 +23,7 @@ const ProjectList = () => (
       </>
     }
   >
-    <div className="flex flex-col gap-6">
+    <div className="projects flex flex-col gap-6">
       <Project
         name="Developer Navigator Host Portal"
         description="This large project was a ground up rewrite of the host portal of our Developer Navigator product internally. Originally in vanilla web components with no framework, and very dated technology, this project was a huge effort to move as customers (developers) were using it actively every day. This is a Frontend for developers to use to onboard systems from Web Applications, to APIs, and entire scaffoldings of projects. This host portal had to be scaled in way that innersourcing was fast and efficient, housing 17+ Micro Frontends."

@@ -1,0 +1,11 @@
+/*
+These are styles to override the project card - it had some finnicky padding out of the box
+*/
+div.projects.flex > div.flex {
+  gap: 1rem;
+  padding: 2rem;
+}
+
+div.projects.flex div.flex.flex-col.items-center.gap-y-2 {
+  gap: 1rem;
+}
