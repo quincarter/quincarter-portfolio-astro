@@ -45,7 +45,7 @@ const ProjectList = () => (
       />
       <Project
         name="DevNav Shared SDK"
-        description="The Shared SDK was pivotal in delivering the previous Host Portal project efficiently. Built with Nx, Yarn Workspaces, Lit Element, TypeScript, and Changesets, this published to our internal artifactory for consumption across multiple teams to deliver a clear and concise experience across the board. These shared components allowed developers building MFEs the ability to move quickly and efficiently. This project test coverage was 99.9% covered across more than 60 shared components in this monorepo."
+        description="The Shared SDK was pivotal in delivering the previous Host Portal project efficiently. Built with Nx, Yarn Workspaces, Lit Element, TypeScript, and Changesets, this published to our internal artifactory for consumption across multiple teams to deliver a clear and concise experience across the board. These shared components allowed developers building MFEs the ability to move quickly and efficiently. This project's test coverage is 99.9% covered across more than 30+ shared components in this monorepo."
         link="/"
         img={{ src: '/assets/images/code-logo.svg', alt: 'code logo' }}
         category={
