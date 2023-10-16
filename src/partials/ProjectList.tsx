@@ -60,17 +60,54 @@ const ProjectList = () => (
         }
       />
       <Project
-        name="Project 3"
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-        bibendum. Nunc non posuere consectetur, justo erat semper enim, non
-        hendrerit dui odio id enim."
-        link="/"
-        img={{ src: '/assets/images/project-maps.png', alt: 'Project Maps' }}
+        name="This Project! This site you're on right now!"
+        description="Sort of a portfolio/blog/digital resume for all of my brain dumping and project collections. I needed a better way to showcase my work; my last portfolio site was old and dated and it was time for some new technology. This site is built with astro, react components, and a few Lit components sprinkled in. Deployed with netlify and hosted on my own personal domain."
+        link="https://quincarter.com"
+        img={{
+          src: '/assets/images/hey-sunglasses.png',
+          alt: 'Quin Carter Bitmoji',
+        }}
         category={
           <>
             <Tags color={ColorTags.FUCHSIA}>Astro.js</Tags>
-            <Tags color={ColorTags.INDIGO}>Bootstrap</Tags>
+            <Tags color={ColorTags.BLUE}>React</Tags>
+            <Tags color={ColorTags.CYAN}>Lit Element</Tags>
             <Tags color={ColorTags.ROSE}>TypeScript</Tags>
+            <Tags color={ColorTags.VIOLET}>Web Components</Tags>
+          </>
+        }
+      />
+      <Project
+        name="Capital One Auto Refinance"
+        description="This is the customer facing site that pipes into the agent platform I supported internally. Any refinance that happened, went through this page and then through VOLT."
+        link="https://www.capitalone.com/auto-financing/refinance/"
+        img={{
+          src: '/assets/images/capitalone-logo.svg',
+          alt: 'capitalone auto refi',
+        }}
+        category={
+          <>
+            <Tags color={ColorTags.RED}>Angular</Tags>
+            <Tags color={ColorTags.CYAN}>Lit Element</Tags>
+            <Tags color={ColorTags.YELLOW}>JavaScript</Tags>
+            <Tags color={ColorTags.ROSE}>TypeScript</Tags>
+            <Tags color={ColorTags.VIOLET}>Web Components</Tags>
+            <Tags color={ColorTags.LIME}>Performance</Tags>
+          </>
+        }
+      />
+      <Project
+        name="Brew Me App"
+        description="This is a hobby project that turned into something much larger. It's a simple application that I started out of necessity to calculate accurate coffee brews with my Chemex. I found out later that all coffee methods needed exact measurements for consistency across the board. I have productionized this application and shared it in my old facebook groups and on r/espresso and r/coffee. It's taken on about 2000 daily active users and people seem to love this thing. I do my best to support it in my free time. I have a redesign of it stashed on my local but I have not had time lately to work on it."
+        link="https://brewme.app/"
+        img={{ src: '/assets/images/brew-me-icon.png', alt: 'brew me icon' }}
+        category={
+          <>
+            <Tags color={ColorTags.RED}>Angular</Tags>
+            <Tags color={ColorTags.TEAL}>Ionic Framework</Tags>
+            <Tags color={ColorTags.CYAN}>Lit Element</Tags>
+            <Tags color={ColorTags.ROSE}>TypeScript</Tags>
+            <Tags color={ColorTags.VIOLET}>Web Components</Tags>
           </>
         }
       />
