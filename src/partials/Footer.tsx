@@ -1,10 +1,10 @@
-import { FooterCopyright, Section } from 'astro-boilerplate-components';
-
-import { AppConfig } from '@/utils/AppConfig';
+import { Section } from 'astro-boilerplate-components';
 
 const Footer = () => (
   <Section>
-    <FooterCopyright site_name={AppConfig.site_name} />
+    <div className="text-sm text-gray-200">
+      © Copyright {new Date().getFullYear()} by Quin Carter.
+    </div>
   </Section>
 );
 
