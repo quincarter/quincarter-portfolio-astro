@@ -34,6 +34,12 @@ const Navbar = () => (
         >
           Resume
         </NavMenuItem>
+        <NavMenuItem
+          href="https://discordapp.com/users/266934198055600150"
+          target="_blank"
+        >
+          Discord
+        </NavMenuItem>
       </NavMenu>
     </NavbarTwoColumns>
   </Section>
