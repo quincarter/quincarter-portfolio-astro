@@ -15,6 +15,8 @@ import Base from '@/templates/Base.astro';
 import { AppConfig } from '@/utils/AppConfig';
 import { sortByDate } from '@/utils/Posts';
 
+import '../../styles/blog-gallery.css';
+
 type GetStaticPaths = {
   paginate: any;
 }; // Overrides `GetStaticPathsOptions` types from Astro
@@ -36,7 +38,7 @@ const titleSuffix = ` - ${AppConfig.site_name}`;
 const titleBase = `Blog page ${page.currentPage}`;
 const title = titleBase + titleSuffix;
 const description =
-  'Pagination example built with Astro styled with Tailwind CSS.';
+  'These are all of my most recent blog posts and technical articles - either written here or on medium.com';
 ---
 
 <Base head={{ title, description }}>
@@ -48,7 +50,9 @@ const description =
   </Section>
 
   <Section>
-    <BlogGallery postList={page.data} />
+    <div class="blog-gallery">
+      <BlogGallery postList={page.data} />
+    </div>
   </Section>
 
   <Section>
