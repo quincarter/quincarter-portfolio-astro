@@ -1,4 +1,4 @@
-import type { MarkdownInstance } from 'astro';
+import type { MDXInstance } from 'astro';
 import type { IFrontmatter } from 'astro-boilerplate-components';
 import {
   BlogGallery,
@@ -7,7 +7,7 @@ import {
 } from 'astro-boilerplate-components';
 
 type IRecentPostsProps = {
-  postList: MarkdownInstance<IFrontmatter>[];
+  postList: MDXInstance<IFrontmatter>[];
 };
 
 const RecentPosts = (props: IRecentPostsProps) => (

@@ -19,7 +19,7 @@ const Navbar = () => (
               loading="lazy"
             />
           }
-          name="Quin Carter's Portfolio"
+          name="Quin Carter"
         />
       </a>
 
@@ -27,6 +27,12 @@ const Navbar = () => (
         <NavMenuItem href="/posts/">Technical Articles</NavMenuItem>
         <NavMenuItem href="https://github.com/quincarter" target="_blank">
           GitHub
+        </NavMenuItem>
+        <NavMenuItem
+          href="https://app.enhancv.com/share/636d9ae4/?utm_medium=growth&utm_campaign=share-resume&utm_source=dynamic"
+          target="_blank"
+        >
+          Resume
         </NavMenuItem>
       </NavMenu>
     </NavbarTwoColumns>

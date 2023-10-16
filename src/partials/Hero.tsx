@@ -44,21 +44,33 @@ const Hero = () => (
               alt="Linkedin icon"
             />
           </a>
-          <a href="">
+          <a
+            href="https://app.enhancv.com/share/636d9ae4/?utm_medium=growth&utm_campaign=share-resume&utm_source=dynamic"
+            target="_blank"
+          >
             <HeroSocial
-              src="/assets/images/twitter-icon.png"
-              alt="Twitter icon"
+              src="/assets/images/resume-logo.png"
+              alt="Resume icon"
             />
           </a>
-          <a href="/">
+          <a
+            href="https://gitlab.com/users/quincarter/projects"
+            target="_blank"
+          >
             <HeroSocial
-              src="/assets/images/facebook-icon.png"
-              alt="Facebook icon"
+              src="/assets/images/gitlab-icon.png"
+              alt="Gitlab icon"
             />
           </a>
-          <a href="/">
+          <a href="https://github.com/quincarter" target="_blank">
             <HeroSocial
-              src="/assets/images/youtube-icon.png"
+              src="/assets/images/github-icon.png"
+              alt="github icon"
+            />
+          </a>
+          <a href="https://medium.com/@quincarter" target="_blank">
+            <HeroSocial
+              src="/assets/images/medium-logo.webp"
               alt="Youtube icon"
             />
           </a>
