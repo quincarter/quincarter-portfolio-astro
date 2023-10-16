@@ -1,3 +1,5 @@
+import '../styles/blog-gallery.css';
+
 import type { MDXInstance } from 'astro';
 import type { IFrontmatter } from 'astro-boilerplate-components';
 import {
@@ -24,7 +26,9 @@ const RecentPosts = (props: IRecentPostsProps) => (
       </div>
     }
   >
-    <BlogGallery postList={props.postList} />
+    <div className="blog-gallery">
+      <BlogGallery postList={props.postList} />
+    </div>
   </Section>
 );
 

@@ -1,0 +1,18 @@
+---
+layout: '@/templates/BasePost.astro'
+title: WebAssembly (WASM) is a mystery on the internet
+description: Going over WebAssembly more in depth from my previous post. This takes a much deeper dive into the innerworkings of WASM in the browser and bytecoders/language support available as of 2022.
+pubDate: 2022-06-03T00:00:00Z
+imgSrc: '/assets/images/wasm-and-js.png'
+imgAlt: 'bitmoji question mark image'
+---
+import LinkPreview from "../../partials/LinkPreview.tsx";
+
+# Does my site even need WASM?
+1. Is my application on the web, and is it only on the web?
+2. Is my application on desktop (or mobile) and only on desktop (or mobile)? (This is referring to native apps)
+3. If you answered yes to one of those, but not the other, will my application ever need to be cross platform?
+4. Does my application have any sort of dependency for 3rd party libraries or rendering that is tough for JavaScript to handle efficiently?  
+
+I won't rehash the whole article here, but here is a link to it if you want to read more:
+<LinkPreview title="WebAssembly (WASM) is a mystery on the internet" href="https://medium.com/@quincarter/webassembly-wasm-is-a-mystery-on-the-internet-3fc94220fd69" img="/assets/images/wasm.webp" description="If you are like me, and have looked into WebAssembly at all, there are not that many projects out in the world of WASM development willing to share their code or experience. You will not find..."/>
