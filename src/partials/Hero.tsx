@@ -71,7 +71,16 @@ const Hero = () => (
           <a href="https://medium.com/@quincarter" target="_blank">
             <HeroSocial
               src="/assets/images/medium-logo.webp"
-              alt="Youtube icon"
+              alt="Medium icon"
+            />
+          </a>
+          <a
+            href="https://discordapp.com/users/266934198055600150"
+            target="_blank"
+          >
+            <HeroSocial
+              src="/assets/images/discord-logo.webp"
+              alt="discord icon"
             />
           </a>
         </>
