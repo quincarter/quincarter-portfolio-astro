@@ -34,6 +34,7 @@
   "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "netlify.build_hook": "https://api.netlify.com/build_hooks/653436d7bfae0c381f4fc864",
-  "netlify.site_id": "https://quincarter-portfolio.netlify.app/"
+  "netlify.build_hook": "",
+  "netlify.site_id": "393d8b5e-3bb4-423b-b26e-4b9df76cf5bd",
+  "netlify.api_token": "XVhHcZ37OGTN6gSo_nYyx8vQTEDa61FQfisLRawEg9E"
 }
