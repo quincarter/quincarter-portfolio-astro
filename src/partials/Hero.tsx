@@ -21,9 +21,11 @@ const Hero = () => (
 				<p className={styles.mainSchpeel}>
 					{MAIN_HERO_DATA.description}
 					<br />
+					<br />
 					After a long hiatus from the internet blogging space, I have decided
 					in 2026 to start that back up again. I love writing and plan to write
 					more brain dump articles as the year(s) progress. Stay tuned for more.
+					<br />
 					<br />I have focused on many different technologies over the course of
 					my career, but Frontend Engineering is by far my favorite technology
 					to work on. I am a JavaScript/TypeScript Developer first and foremost,
