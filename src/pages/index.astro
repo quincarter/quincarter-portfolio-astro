@@ -1,6 +1,4 @@
 ---
-import type { IFrontmatter } from 'astro-boilerplate-components';
-
 import { CTA } from '@/partials/CTA';
 import { Hero } from '@/partials/Hero';
 import { ProjectList } from '@/partials/ProjectList';
@@ -8,9 +6,12 @@ import { RecentPosts } from '@/partials/RecentPosts';
 import Base from '@/templates/Base.astro';
 import { AppConfig } from '@/utils/AppConfig';
 import { sortByDate } from '@/utils/Posts';
+import type { MarkdownInstance } from 'astro';
+import type { IFrontmatter } from 'astro-boilerplate-components';
 
-const allPosts = await Astro.glob<IFrontmatter>('./posts/*.mdx');
-const sortedPosts = sortByDate(allPosts);
+const allPosts = await import.meta.glob<MarkdownInstance<IFrontmatter>>('./posts/*.mdx', { eager: true });
+const postList = Object.values(allPosts).filter((post) => post.frontmatter?.pubDate && post.frontmatter?.imgSrc);
+const sortedPosts = sortByDate(postList);
 const lastThreePosts = sortedPosts.slice(0, 3);
 
 const { title } = AppConfig;
