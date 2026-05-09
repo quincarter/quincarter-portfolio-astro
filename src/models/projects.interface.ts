@@ -103,4 +103,16 @@ export const CATEGORY_DATA: CategoryData = {
 		name: 'NestJS',
 		color: ColorTags.PINK,
 	},
+	wasm: {
+		name: 'Web Assembly',
+		color: ColorTags.PURPLE,
+	},
+	chromeExtension: {
+		name: 'Chrome Extension',
+		color: ColorTags.YELLOW,
+	},
+	monorepo: {
+		name: 'Monorepo',
+		color: ColorTags.INDIGO,
+	},
 };

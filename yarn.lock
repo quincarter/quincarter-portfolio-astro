@@ -2030,6 +2030,11 @@ browserslist@^4.24.0:
     node-releases "^2.0.36"
     update-browserslist-db "^1.2.3"
 
+bsky-widget@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/bsky-widget/-/bsky-widget-0.1.1.tgz#e8bf4afe4cd592454f60c92a357ce94f41d80a44"
+  integrity sha512-swJTEcTG5lUtHoM+hcnsuhut+i6pW+h3LMFgpWwmYiSo5XBIViKTgvEGpDEVMb9P+mknTBxDkDhOKGNqanR1WQ==
+
 buffer-equal@0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/buffer-equal/-/buffer-equal-0.0.1.tgz#91bc74b11ea405bc916bc6aa908faafa5b4aac4b"
