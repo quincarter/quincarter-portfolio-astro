@@ -1,49 +1,48 @@
 .fragment {
-  font-size: 12px;
-  font-family: tahoma;
-  height: fit-content;
-  border: 1px solid #ccc;
-  background-color: rgb(30 41 59 / var(--tw-bg-opacity));
-  color: #fff;
-  display: flex;
-  flex-direction: row;
-  gap: 1rem;
-  padding: 1rem;
-  box-sizing: border-box;
-  text-decoration: none;
+	font-size: 12px;
+	font-family: tahoma, sans-serif;
+	height: fit-content;
+	border: 1px solid #ccc;
+	background-color: rgb(30 41 59 / var(--tw-bg-opacity));
+	color: #fff;
+	display: flex;
+	flex-direction: row;
+	gap: 1rem;
+	padding: 1rem;
+	box-sizing: border-box;
+	text-decoration: none;
 }
 
 .fragment:hover {
-  font-size: 12.25px;;
-    transition: font-size 0.5s ease;
+	font-size: 12.25px;
+	transition: font-size 0.5s ease;
 }
 
-.fragment img { 
-  margin: 0;
-  max-height: 7.5rem;
+.fragment img {
+	margin: 0;
+	max-height: 7.5rem;
 }
-
 
 .fragment h3 {
-  padding: 0;
-  margin: 0;
-  color: #22d3ee var(--tw-gradient-to-position);
+	padding: 0;
+	margin: 0;
+	color: #22d3ee var(--tw-gradient-to-position);
 }
 
 .link-content {
-  display: flex;
-  flex-direction: column;
+	display: flex;
+	flex-direction: column;
 }
 
 @media only screen and (max-width: 550px) {
-  .fragment {
-    display: grid;
-    justify-items: center;
-  }
+	.fragment {
+		display: grid;
+		justify-items: center;
+	}
 
-  .fragment img { 
-    margin: 0;
-    max-height: 7.5rem;
-    max-width: 7.5rem;
-  }
+	.fragment img {
+		margin: 0;
+		max-height: 7.5rem;
+		max-width: 7.5rem;
+	}
 }

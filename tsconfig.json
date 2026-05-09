@@ -4,7 +4,8 @@
 		"target": "ESNext",
 		"module": "ESNext",
 		// Enable node-style module resolution, for things like npm package imports.
-		"moduleResolution": "node",
+		"moduleResolution": "bundler",
+		"ignoreDeprecations": "6.0",
 		// Enable JSON imports.
 		"resolveJsonModule": true,
 
@@ -36,7 +37,6 @@
 		"isolatedModules": true,
 		// Add type definitions for our Vite runtime.
 		"types": ["vite/client"],
-		"baseUrl": ".",
 		"paths": {
 			"@/*": ["./src/*"]
 		}

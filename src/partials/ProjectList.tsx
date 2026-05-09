@@ -37,15 +37,11 @@ const ProjectList = () => (
 							src: project.image.src,
 							alt: project.image.alt,
 						}}
-						category={
-							<>
-								{project.category.map((category) => (
-									<Tags key={category.name} color={category.color}>
-										{category.name}
-									</Tags>
-								))}
-							</>
-						}
+						category={project.category.map((category) => (
+							<Tags key={category.name} color={category.color}>
+								{category.name}
+							</Tags>
+						))}
 					/>
 				))
 			}
