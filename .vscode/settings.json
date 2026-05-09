@@ -35,5 +35,6 @@
 		"editor.defaultFormatter": "esbenp.prettier-vscode"
 	},
 	"netlify.build_hook": "https://api.netlify.com/build_hooks/653436d7bfae0c381f4fc864",
-	"netlify.site_id": "https://quincarter-portfolio.netlify.app/"
+	"netlify.site_id": "https://quincarter-portfolio.netlify.app/",
+	"compile-hero.disable-compile-files-on-did-save-code": false
 }
