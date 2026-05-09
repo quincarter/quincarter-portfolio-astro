@@ -38,13 +38,13 @@ const ProjectList = () => (
 							alt: project.image.alt,
 						}}
 						category={
-							<div>
+							<>
 								{project.category.map((category) => (
 									<Tags key={category.name} color={category.color}>
 										{category.name}
 									</Tags>
 								))}
-							</div>
+							</>
 						}
 					/>
 				))
