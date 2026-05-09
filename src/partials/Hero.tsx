@@ -69,6 +69,16 @@ const Hero = () => (
 						/>
 					</a>
 					<a
+						target="_blank"
+						rel="noopener"
+						href="https://bsky.app/profile/quincarter.bsky.social"
+					>
+						<HeroSocial
+							src="/assets/images/bluesky-logo.png"
+							alt="blue sky logo"
+						/>
+					</a>
+					<a
 						href="https://github.com/quincarter"
 						target="_blank"
 						rel="noopener"

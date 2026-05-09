@@ -24,6 +24,61 @@ export const PROJECT_DATA: Project[] = [
 		],
 	},
 	{
+		name: 'Document Viewer Web Component (Open Source)',
+		description: `
+    Standalone Web component for rendering documents of any file type. I am the sole maintainer, creator, and creative mind behind the Document Viewer Web Component. This project was created out of necessity at home to render documents we had stored in our NAS drive. Originally built for a self hosted application I ran to render only PDFs, it has grown immensely to showcase many different filetypes.
+    `,
+		image: {
+			src: '/assets/images/github-icon.png',
+			alt: 'github logo',
+		},
+		link: 'https://github.com/quincarter/document-viewer-web-component',
+		category: [
+			cat.typeScript as Category,
+			cat.litElement as Category,
+			cat.webComponents as Category,
+			cat.performance as Category,
+			cat.wasm as Category,
+		],
+	},
+	{
+		name: 'Component Library Starter (Public Template"',
+		description: `
+    This repo is a starter template for anyone that wants to start using a component library pattern with Nx, Changesets, Typescript, and Lit Element. This can be adapted to use any language or monorepo pattern with any kind of publishing from NPM, PIP, Dockerhub, etc. Out of the box, this aims to solve the initial setup problem that most people have with starting a component library. This also include schematics for creating shell components and building in this monorepo structure. Components are built and served with storybook for internal testing, Verdaccio is bundled with this as an optional docker container to test publishing. Most package settings are configured already. 
+    `,
+		image: {
+			src: '/assets/images/github-icon.png',
+			alt: 'github logo',
+		},
+		link: 'https://github.com/quincarter/component-library-starter',
+		category: [
+			cat.nx as Category,
+			cat.monorepo as Category,
+			cat.storybook as Category,
+			cat.typeScript as Category,
+			cat.litElement as Category,
+			cat.webComponents as Category,
+		],
+	},
+	{
+		name: `I've Got This! Chrome Extension`,
+		description: `
+    This extension can be side loaded or installed from the Chrome Web Store, or Microsoft Edge store. Once configured, this extension will read from your local Emby or Jellyfin, and Seer (JellySeer) instances and verify if you have that content. Seamless integration. Screenshots attached in readme. If installed from the Edge store on mobile this will function on your mobile Edge browser as it supports extensions now!
+    `,
+		image: {
+			src: '/assets/images/combined-ivegotthis.svg',
+			alt: `I've Got this chrome extension`,
+		},
+		link: 'https://github.com/quincarter/ive-got-this-extension/tree/main',
+		category: [
+			cat.chromeExtension as Category,
+			cat.typeScript as Category,
+			cat.litElement as Category,
+			cat.webComponents as Category,
+			cat.performance as Category,
+		],
+	},
+	{
 		name: 'Developer Navigator Host Portal',
 		description: `
     This large project was a ground up rewrite of the host portal of our Developer Navigator 
