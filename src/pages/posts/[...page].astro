@@ -14,6 +14,7 @@ import { CTA } from '@/partials/CTA';
 import Base from '@/templates/Base.astro';
 import { AppConfig } from '@/utils/AppConfig';
 import { sortByDate } from '@/utils/Posts';
+import type { MarkdownInstance } from 'astro';
 
 import '../../styles/blog-gallery.css';
 
@@ -22,8 +23,11 @@ type GetStaticPaths = {
 }; // Overrides `GetStaticPathsOptions` types from Astro
 
 export async function getStaticPaths({ paginate }: GetStaticPaths) {
-  const allPosts = await Astro.glob<IFrontmatter>('./*.mdx');
-  const sortedPosts = sortByDate(allPosts);
+  const allPosts = await import.meta.glob<IFrontmatter>('./*.mdx', { eager: true });
+  const postList = Object.values(allPosts)
+    .map((post: any) => (post?.frontmatter ? post : post?.default))
+    .filter((post: any) => post?.frontmatter?.pubDate && post?.frontmatter?.imgSrc) as MarkdownInstance<IFrontmatter>[];
+  const sortedPosts = sortByDate(postList);
 
   // Return a paginated collection of paths for all posts
   return paginate(sortedPosts, { pageSize: 6 });

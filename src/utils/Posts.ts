@@ -1,10 +1,14 @@
-import type { MDXInstance } from 'astro';
-import type { IFrontmatter } from 'astro-boilerplate-components';
+type DateSortablePost = {
+	frontmatter?: {
+		pubDate?: string | Date;
+	};
+};
 
-export const sortByDate = (posts: MDXInstance<IFrontmatter>[]) => {
-  return posts.sort(
-    (a, b) =>
-      new Date(b.frontmatter.pubDate).valueOf() -
-      new Date(a.frontmatter.pubDate).valueOf(),
-  );
+const getPubDateValue = (post: DateSortablePost) => {
+	const parsedDate = new Date(post?.frontmatter?.pubDate ?? '').valueOf();
+	return Number.isNaN(parsedDate) ? 0 : parsedDate;
+};
+
+export const sortByDate = <T extends DateSortablePost>(posts: T[]) => {
+	return [...posts].sort((a, b) => getPubDateValue(b) - getPubDateValue(a));
 };
