@@ -8,11 +8,11 @@ import {
 	Section,
 } from 'astro-boilerplate-components';
 
-type IRecentPostsProps = {
+type IRecentTalksProps = {
 	talkList: MarkdownInstance<IFrontmatter>[];
 };
 
-const RecentTalks = (props: IRecentPostsProps) => (
+const RecentTalks = (props: IRecentTalksProps) => (
 	<Section
 		title={
 			<div className="flex items-baseline justify-between">
