@@ -11,9 +11,15 @@ import type { MarkdownInstance } from 'astro';
 import type { IFrontmatter } from 'astro-boilerplate-components';
 
 const allPosts = await import.meta.glob<MarkdownInstance<IFrontmatter>>('./posts/*.mdx', { eager: true });
+const allTalks = await import.meta.glob<MarkdownInstance<IFrontmatter>>('./talks/*.mdx', { eager: true });
+
 const postList = Object.values(allPosts).filter((post) => post.frontmatter?.pubDate && post.frontmatter?.imgSrc);
+const talkList = Object.values(allTalks).filter((post) => post.frontmatter?.pubDate && post.frontmatter?.imgSrc);
+
 const sortedPosts = sortByDate(postList);
+const sortedTalks = sortByDate(talkList);
 const lastThreePosts = sortedPosts.slice(0, 3);
+const lastThreeTalks = sortedTalks.slice(0, 3);
 
 const { title } = AppConfig;
 const { description } = AppConfig;
@@ -22,7 +28,7 @@ const { description } = AppConfig;
 <Base head={{ title, description }}>
   <Hero />
   <RecentPosts postList={lastThreePosts} />
-  <RecentTalks talkList={[]} />
+  <RecentTalks talkList={lastThreeTalks} />
   <ProjectList />
   <CTA />
 </Base>
