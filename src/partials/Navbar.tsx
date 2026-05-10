@@ -25,6 +25,7 @@ const Navbar = () => (
 
 			<NavMenu>
 				<NavMenuItem href="/posts/">Technical Articles</NavMenuItem>
+				<NavMenuItem href="/talks/">Tech Talks/Workshops</NavMenuItem>
 				<NavMenuItem href="https://github.com/quincarter" target="_blank">
 					GitHub
 				</NavMenuItem>
