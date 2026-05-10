@@ -44,7 +44,7 @@ export const PROJECT_DATA: Project[] = [
 	{
 		name: 'Component Library Starter (Public Template"',
 		description: `
-    This repo is a starter template for anyone that wants to start using a component library pattern with Nx, Changesets, Typescript, and Lit Element. This can be adapted to use any language or monorepo pattern with any kind of publishing from NPM, PIP, Dockerhub, etc. Out of the box, this aims to solve the initial setup problem that most people have with starting a component library. This also include schematics for creating shell components and building in this monorepo structure. Components are built and served with storybook for internal testing, Verdaccio is bundled with this as an optional docker container to test publishing. Most package settings are configured already. 
+    This repo is a starter template for anyone that wants to start using a component library pattern with Nx, Changesets, Typescript, and Lit Element. This can be adapted to use any language or monorepo pattern with any kind of publishing from NPM, PIP, Dockerhub, etc. Out of the box, this aims to solve the initial setup problem that most people have with starting a component library. This also includes schematics for creating shell components and building in this monorepo structure. Components are built and served with storybook for internal testing, Verdaccio is bundled with this as an optional docker container to test publishing. Most package settings are configured already. 
     `,
 		image: {
 			src: '/assets/images/github-icon.png',
