@@ -42,16 +42,16 @@ interface Props {
 
 const { page } = Astro.props as Props;
 const titleSuffix = ` - ${AppConfig.site_name}`;
-const titleBase = `Blog page ${page.currentPage}`;
+const titleBase = `Tech Talk page ${page.currentPage}`;
 const title = titleBase + titleSuffix;
 const description =
-  'These are all of my most recent blog posts and technical articles - either written here or on medium.com';
+  'These are all of my most recent tech talks/workshops - if I have a video recording of the talk, I will share it with the slide deck (if available). This may also include Youtube content.';
 ---
 
 <Base head={{ title, description }}>
   <Section>
     <PaginationHeader
-      title='Blog Posts/Technical Articles'
+      title='Tech Talks/Workshops'
       description={description}
     />
   </Section>
