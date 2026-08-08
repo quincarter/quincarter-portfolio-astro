@@ -1,7 +1,7 @@
 ---
 layout: '@/templates/BasePost.astro'
 title: 'Meet BrewMe: A Local-First Coffee Companion'
-description: The story of how I rebuilt my coffee brewing app twice — from a stale Ionic/Angular hybrid, through an overcomplicated Next.js version that cost me a lot of users, to a back-to-basics Lit Element rewrite that finally dropped the login screen for good.
+description: The story of how I rebuilt my coffee brewing app twice, from a stale Ionic/Angular hybrid, through an overcomplicated Next.js version that cost me a lot of users, to a back-to-basics Lit Element rewrite that finally dropped the login screen for good.
 pubDate: 2026-08-08T12:00:00Z
 imgSrc: '/assets/images/brew-me-icon.png'
 imgAlt: 'brewme app icon'
@@ -11,38 +11,34 @@ import LinkPreview from "../../partials/LinkPreview.tsx";
 
 ## A Chemex and some bad math
 
-My Chemex problem was simple and annoying: every pour-over came out a little different. Sometimes bright and thin, sometimes muddy and over-extracted, and the only thing that changed between cups was how carelessly I'd eyeballed the water. I started jotting ratios in my phone's notes app just to keep myself honest. Notes turned into a tiny calculator. The calculator turned into an app I put in front of a few friends. Friends put it in front of r/coffee and r/espresso, and suddenly a tool I'd built to fix my own bad pours had thousands of people using it to fix theirs.
+My Chemex problem was simple and annoying. Every pour-over came out a little different, sometimes bright and thin, sometimes muddy and over-extracted, and the only thing that changed between cups was how carelessly I'd eyeballed the water. I started jotting ratios in my phone's notes app just to keep myself honest. Notes turned into a tiny calculator. The calculator turned into an app I put in front of a few friends, and they put it in front of r/coffee and r/espresso. Pretty soon a tool I'd built to fix my own bad pours had thousands of people using it.
 
-That's the part of the story most side projects share. What makes BrewMe's story worth telling is what happened *after* it had real users — because I rebuilt it, completely, twice, and got it wrong once before I got it right.
+I've rebuilt it twice since then. The second time I got it wrong before I got it right.
 
-## Three lives of the same app
+## Three versions, one lesson
 
-**V1** was an Ionic app written in Angular, and it stuck around for years. It had real, loyal users. It also just grew stale — the way any app does when the tooling around it keeps moving and the app itself doesn't.
+**V1** was an Ionic app written in Angular, and it stuck around for years with real, loyal users. It just got stale over time, the way most apps do when you stop touching them and everything around them keeps moving.
 
-**V2** was where I got it wrong. I moved to Next.js and, instead of just modernizing the same tool, I bolted a whole layer of coffee roasters and coffee shops onto it. The brew calculator — the entire reason the app existed in the first place — got buried under features nobody asked for. The feedback was loud and it was not kind: I had overcomplicated the one simple task I'd originally solved. I lost a lot of users over that version, and they were right to leave.
+**V2** moved to Next.js, and this is the version I'd take back if I could. Instead of just modernizing the same tool, I added a whole layer of coffee roasters and coffee shops on top of it. The brew calculator, which was the entire reason people used the app, ended up buried a few taps deep. People noticed, and told me about it - a lot of them, not gently. I'd overcomplicated the one thing I'd already solved, and I lost a good chunk of my user base over it.
 
-**V3**, the version live today, is a back-to-basics rewrite in **Lit** — standard Web Components with signals for state instead of a framework runtime sitting on top of the DOM. It's the same simple tool people fell in love with in the original Ionic app, just faster and easier for me to maintain now that there's no Angular overhead sitting underneath it.
+**V3** is what's live now: a rewrite in Lit, using standard Web Components with signals for state instead of a framework sitting on top of the DOM. Functionally it's closer to V1 than V2 - same simple calculator-first app people liked in the first place, just faster to load and a lot less code for me to maintain since Angular isn't in the picture anymore.
 
-Two rewrites, one hard lesson: people didn't want more from BrewMe. They wanted the ratio calculator, done well, and nothing standing in front of it.
+## What's actually in the app
 
-## What using it actually looks like
+Open BrewMe and you land on the brew calculator. Punch in a dose or a target yield and it works out your ratio as you type, no submit button. Every brew you save shows up in a recent brews list on the home screen, along with a day streak, so the app tracks your habit without making you think about tracking anything.
 
-Open BrewMe and you land on a **brew calculator** — punch in a dose or a target yield and it works out the rest of your ratio live, no submit button, no waiting. Every brew you save gets logged to a **recent brews** history on the home screen, alongside a running day-streak, so the app quietly tracks your habit without ever asking you to think about "tracking" anything.
+Beyond the calculator there are brew guides for V60, Chemex, French Press, Kalita Wave, Origami, Hario Switch, Clever Dripper, cold brew, drip, AeroPress (with World AeroPress Championship winning recipes you can browse by year), and espresso. The espresso guide has the most in it - video walkthroughs from Lance Hedrick and James Hoffmann, plus a glossary that defines the terms those videos assume you already know, things like RDT, WDT, tamping, channeling, and extraction. It's the kind of thing that helps when your shot tastes sour and you're not sure why.
 
-Past the calculator are **brew guides** for the methods people actually use — V60, Chemex, French Press, Kalita Wave, Origami, Hario Switch, Clever Dripper, cold brew, drip, AeroPress (with the World AeroPress Championship's winning recipes browsable year by year), and espresso. The espresso guide is the deepest of the bunch: video walkthroughs from **Lance Hedrick** and **James Hoffmann** sit alongside a terminology glossary that actually defines the jargon those videos assume you already know — RDT, WDT, tamping, channeling, extraction, dose and yield. It's the kind of reference that turns "why does my shot taste sour" into something you can actually diagnose.
+## No more login screen
 
-## No account. No cloud. No catch.
+Both the Ionic and Next.js versions made you create an account before you could do anything with the app. Looking back, I think that cost me more users than I realized at the time - asking someone for their information before they've calculated a single ratio is a big ask for a free tool. The Lit rewrite drops that. No sign-up, no login. Every saved brew, streak, and preference lives in your browser's local storage, and nothing is synced anywhere because there's no server to sync it to.
 
-Both the Ionic and Next.js versions made you create an account before you could do anything, and I think that cost me more users than I realized — asking someone for their information before they've even calculated a single brew ratio is a lot to ask for a free tool. The Lit rewrite drops that entirely. There's no sign-up, no login screen, nothing. Every saved brew, every streak, every preference lives in your browser's local storage — nothing is synced to a server, because there is no server holding your data. You use BrewMe the same way you'd use a kitchen timer: you just use it.
+It's also a PWA, so you can install it to your home screen and it works offline once it's loaded - useful if your kitchen wifi is bad or you're brewing somewhere with no signal.
 
-It's also a proper **PWA**. Install it to your home screen and it runs like a native app, with a service worker that precaches everything it needs so your brew guides and calculator work with no signal at all — useful when your kitchen has spotty Wi-Fi or you're roasting your morning cup somewhere without service.
+## Free and open source
 
-## Free, and actually open
-
-BrewMe is free, and the entire Lit rewrite is open source under the MIT license. If you want to see how a local-first, no-backend PWA is put together — or you've got a brew method you think deserves a guide — the repo is right there.
+BrewMe is free, and the Lit rewrite is open source under the MIT license. If you want to see how it's built, or you think a brew method is missing a guide, the repo is public.
 
 <LinkPreview title="brew-me-app-lit" href="https://github.com/quincarter/brew-me-app-lit" img="/assets/images/github-icon.png" description="The source for BrewMe's current Lit Element rewrite — Lit 3, TypeScript, Vite, and IndexedDB, with no account system and no backend."/>
-
-Two rewrites and a hard lesson later, BrewMe is back to doing one thing well: get out of the way so the coffee's the only thing you're paying attention to.
 
 <LinkPreview title="BrewMe" href="https://brewme.app" img="/assets/images/brew-me-icon.png" description="A free, local-first coffee brewing companion — brew calculator, recent brews history, and guides for every method, no login required."/>
