@@ -1,7 +1,7 @@
 ---
 layout: '@/templates/BasePost.astro'
 title: 'Building Apps with Lit in 2026'
-description: An expanded walkthrough of my "Building Apps with Lit Element in 2026" talk — app shell architecture, routing with @lit-labs/router and Vaadin Router, dependency injection with @lit/context, async state with @lit/task, the ViewMixin pattern, signals for state, and when Lit is actually the right call.
+description: An expanded walkthrough of my "Building Apps with Lit Element in 2026" talk. Covers app shell architecture and routing (@lit-labs/router and Vaadin Router), dependency injection with @lit/context, async state with @lit/task, the ViewMixin pattern, signals for state, and when Lit is actually the right call.
 pubDate: 2026-08-04T12:00:00Z
 imgSrc: '/assets/images/building-with-lit-cover.png'
 imgAlt: 'Building Apps with Lit Element in 2026 title slide'
@@ -9,9 +9,9 @@ imgAlt: 'Building Apps with Lit Element in 2026 title slide'
 
 import LinkPreview from "../../partials/LinkPreview.tsx";
 
-I gave this talk twice this year. First in April at Capital One's internal conference, Async Live, to a room of engineers who mostly already knew what a Web Component was. Then again this week at the RVA.js Meetup, where the crowd was a real mix — some people doing React every day, a couple of Angular folks, a few who'd never touched a Web Component at all. That second audience changed the talk on the fly. Instead of staying in "advanced app architecture" mode the whole time, I ended up spending more of the session just walking through what Lit actually is as a language before getting back to the app-shell stuff.
+I gave this talk twice this year. First in April at Capital One's internal conference, Async Live, to a room of engineers who mostly already knew what a Web Component was. Then again this week at the RVA.js Meetup, where the crowd was a real mix. Some people did React every day, a couple were Angular folks, and a few had never touched a Web Component at all. That second audience changed the talk on the fly. Instead of staying in "advanced app architecture" mode the whole time, I ended up spending more of the session just walking through what Lit actually is as a language before getting back to the app-shell stuff.
 
-Both crowds were great, and the RVA.js one especially — that group is always welcoming, and the questions afterward ran long in a good way. But it reminded me that Lit's popularity doesn't match how good it is, so I wanted to write up an expanded version of the talk here: the same architecture and code from the slides, with more explanation than I had time for on stage.
+Both crowds were great, and the RVA.js one especially so. That group is always welcoming, and the questions afterward ran long in a good way. But it reminded me that Lit's popularity doesn't match how good it is, so I wanted to write up an expanded version of the talk here: the same architecture and code from the slides, with more explanation than I had time for on stage.
 
 ## Where Lit actually comes from
 
@@ -19,20 +19,30 @@ One thing that came up at the meetup: a decent number of people didn't know Lit 
 
 ## The landscape, and why Web Components still have a seat at the table
 
-React, Angular, Vue, and Svelte all solve the same basic problem in different ways: a component model, declarative UI, some form of dependency management, and a development experience people like. Every one of them is a legitimate, well-supported choice.
+React, Angular, Vue, and Svelte all solve the same basic problem in different ways. Each gives you a component model, a way to declare your UI, some form of dependency management, wrapped up in a development experience people like. Every one of them is a legitimate, well-supported choice.
 
-Web Components take a different angle — instead of a framework's opinions, you get the platform's primitives: custom elements, shadow DOM, and a template system, standardized in the browser itself. Lit doesn't replace those primitives, it makes them pleasant to use day to day: reactive properties, an efficient template renderer, and a small set of conventions instead of a large one. That's the pitch I open the talk with, and it's the reason a component built in Lit works the same whether it's dropped into a React app, a Vue app, or a plain HTML page.
+But here's the part I really want to land: every one of those frameworks needs a separate runtime just to render a component, and React, Angular, and Vue each come with their own. That runtime does real work on every render, building and diffing a virtual copy of the UI before anything actually touches the page. React's VDOM gets sold as a performance feature, and historically it was, compared to the naive DOM manipulation it replaced. But it's still overhead that exists purely because React doesn't render directly. You're paying a tax to get to the DOM. The DOM isn't slow. The extra layer sitting between your code and it is what costs you.
+
+Web Components don't have that layer. A custom element is `HTMLElement`, extended. The browser is the runtime. There's no virtual DOM to diff and no framework runtime to boot before a component can render, because rendering was never abstracted away from the platform to begin with. Lit sits on top of that with reactive properties and an efficient template renderer, making the platform's own rendering faster and easier to work with instead of building a parallel rendering engine. So Lit ends up lighter and faster: there's simply less standing between your code and the screen.
+
+Angular deserves a fair callout here too, because its biggest weakness is also one of its biggest strengths. Angular gives you a lot out of the box: routing, forms, dependency injection, a whole opinionated structure for how an app gets put together. For a large team building a large app, that structure is valuable. It's a lot of decisions you don't have to make from scratch. But most components, and plenty of applications, don't need that. Bringing in a full framework's worth of conventions and runtime to build one dropdown, or one dashboard widget, is bringing a lot more than the job asked for.
+
+Which gets at the point I actually want people to leave with: there isn't a single right tool, there's the right tool for the person and the problem in front of them. If a team knows React deeply and building in React lets them ship something solid, that's the right call for them, full stop. The tool that matters is the one you understand well enough to use correctly. Where I see Lit fit best is exactly where a full framework's runtime and conventions cost more than they give back: component libraries, micro-frontends, and small-to-mid apps that don't need Angular's scaffolding or React's ecosystem to get built well.
+
+That "as long as you understand it" part matters more now than it used to. AI tools can help someone make sense of an unfamiliar pattern. I think that's a good use of them.
+
+Frontend engineering is a craft, closer to an art than people give it credit for, and AI still isn't particularly good at it. It can write code that runs. Code that runs isn't the same as code that reads well or survives contact with real users. CSS is where that gap shows up the most, and it's where frontend engineering gets to shine. I made that argument at length in [a separate talk on expressing yourself with CSS](/talks/expressing-yourself-with-css-in-2026), if you want the longer version of it.
 
 ## What "building an app" actually needs
 
 Components alone don't make an application. To take Lit from "nice way to build a button" to "the thing my whole app is written in," you need answers to the same handful of questions every framework answers for you:
 
-- **Structure** — where does code live, and what's the separation of concerns?
-- **Routing** — how do you handle navigation and deep links?
-- **Data flow** — how does state get from where it lives to where it's rendered, without prop-drilling everything by hand?
-- **State management** — something reactive, without pulling in a large state library for a small app.
-- **A way to standardize views** — so every page doesn't reinvent the same boilerplate.
-- **Packaging** — can pieces of this ship independently, as micro-frontends, if a team needs that?
+- **Structure**: where does code live, and what's the separation of concerns?
+- **Routing**: how do you handle navigation and deep links?
+- **Data flow**: how does state get from where it lives to where it's rendered, without prop-drilling everything by hand?
+- **State management**: something reactive, without pulling in a large state library for a small app.
+- **A way to standardize views**: so every page doesn't reinvent the same boilerplate.
+- **Packaging**: can pieces of this ship independently as micro-frontends, if a team needs that?
 
 The rest of this post walks through how I answer each of those, using the same App Shell pattern from the talk.
 
@@ -58,9 +68,9 @@ src
     └── todos-page
 ```
 
-`app-shell.ts` is the root: it owns routing and provides the app's shared contexts. `components/` holds atomic, reusable UI that doesn't know anything about the app around it. `views/` holds page-level components, the things routes actually render. `shared/` is the connective tissue — route config, context definitions, state stores, and utility functions that don't belong to any one view.
+`app-shell.ts` is the root: it owns routing and provides the app's shared contexts. `components/` holds atomic, reusable UI that doesn't know anything about the app around it. `views/` holds page-level components, the things routes actually render. `shared/` is the connective tissue, holding route config, context definitions, state stores, and utility functions that don't belong to any one view.
 
-The build order I walk through on stage is: scaffold the project with Vite, strip out the starter boilerplate, wire up `@lit/context` for dependency injection, then add `@lit-labs/router` for navigation. Once routing exists, add a navigation config and a navigation context, build out a page, and finally wrap it with a `ViewMixin` so every new page gets the same context-consumption and lifecycle behavior for free. Each of those pieces gets its own section below.
+The build order I walk through on stage starts with scaffolding the project in Vite and clearing out the starter boilerplate. From there I wire up `@lit/context` for dependency injection, then add `@lit-labs/router` for navigation. Once routing exists, I add a navigation config and a navigation context, build out a page, and finally wrap it with a `ViewMixin` so every new page gets the same context-consumption and lifecycle behavior for free. Each of those pieces gets its own section below.
 
 ## Routing: two solid options
 
@@ -113,7 +123,7 @@ export class AppShell extends LitElement {
 
 The routes live wherever `AppShell` is defined, `render` functions return whatever template you want for each path, and `this._router.outlet()` is where the matched route actually paints.
 
-**Vaadin Router** is the alternative when you want something framework-agnostic with more mileage on nested routes and transitions — it's become something of an industry default for larger Web Component apps outside the Lit ecosystem specifically:
+**Vaadin Router** is the alternative when you want something framework-agnostic with more mileage on nested routes and transitions. It's become something of an industry default for larger Web Component apps outside the Lit ecosystem:
 
 ```ts
 // 1. Import the Router
@@ -163,7 +173,7 @@ The difference in shape matters: Vaadin Router operates on a real DOM node it fi
 
 ## Data flow: context and tasks
 
-This is the part of the talk that tends to get the most "oh, that's clean" reactions, especially from people coming from React who assume Web Components mean prop-drilling everything by hand.
+This is the part of the talk that gets the most "oh, that's clean" reactions, especially from people coming from React who assume Web Components mean prop-drilling everything by hand.
 
 **`@lit/context`** is dependency injection for the component tree. One component provides a value, any descendant can consume it, and nothing in between has to know or care that it's being passed through:
 
@@ -201,9 +211,9 @@ export class MyView extends LitElement {
 }
 ```
 
-I use this pattern for navigation data and for access/permissions data — anything that a lot of unrelated views need to read, but that shouldn't be threaded through every intermediate component's props. `subscribe: true` is the part worth calling out: without it, a consumer only gets the context value once, at connect time. With it, the consumer re-renders whenever the provided value changes, which is what makes this a real substitute for the state-passing you'd otherwise reach a bigger library for.
+I use this pattern for navigation data and for access and permissions data: anything that a lot of unrelated views need to read but shouldn't be threaded through every intermediate component's props. `subscribe: true` is the part worth calling out. Without it, a consumer only gets the context value once, at connect time. With it, the consumer re-renders whenever the provided value changes, which is what makes this a real substitute for the state-passing you'd otherwise reach a bigger library for.
 
-**`@lit/task`** is the other half of the story: a reactive controller for async work that lives inside the component lifecycle instead of next to it.
+**`@lit/task`** is a reactive controller for async work that lives inside the component lifecycle instead of next to it.
 
 ```ts
 // 1. Defining a task
@@ -236,11 +246,11 @@ render() {
 }
 ```
 
-`args` returns the reactive dependencies for the task. Whenever anything in that array changes — `this.selectedTodoId` here — the task resets and reruns automatically, no manual `updated()` check required. And `render()` forces you to account for all three states: pending, error, and complete. That's the part I like most about it. It gets rid of the "boolean soup" of `isLoading` and `isError` flags that async state tends to accumulate in every framework, and it makes it impossible to forget the error case, because the type system won't let you skip it.
+`args` returns the reactive dependencies for the task. Whenever anything in that array changes, like `this.selectedTodoId` here, the task resets and reruns automatically, saving you from writing a manual `updated()` check. And `render()` forces you to account for all three states: pending, error, and complete. That's the part I like most about it. It gets rid of the "boolean soup" of `isLoading` and `isError` flags that async state accumulates in most frameworks, and it makes it impossible to forget the error case, because the type system won't let you skip it.
 
 ## Standardizing views with a mixin
 
-Once you have context and routing, every view ends up needing the same handful of things: navigation data, access data, and sometimes a micro-frontend to load in. Rather than repeating that in every page component, I pull it into a `ViewMixin`:
+Once you have context and routing, every view ends up needing the same navigation and access data, and sometimes a micro-frontend to render alongside it. Rather than repeating that in every page component, I pull it into a `ViewMixin`:
 
 ```ts
 // 1. Context-based data flow
@@ -323,7 +333,7 @@ export class TodosPage extends ViewMixin(LitElement) {
 }
 ```
 
-TypeScript mixins look unfamiliar the first time you write one, but the pattern is simple: a function that takes a base class and returns an extended one. `ViewMixin(LitElement)` gives you a `LitElement` subclass with navigation, access checks, and MFE loading already wired up, so `TodosPage` only has to define what makes it different: its own render output. Any new page gets the same treatment by extending the same mixin instead of copying lifecycle code around.
+TypeScript mixins look unfamiliar the first time you write one, but the pattern is a function that takes a base class and returns an extended one. `ViewMixin(LitElement)` gives you a `LitElement` subclass with navigation, access checks, and MFE loading already wired up, so `TodosPage` only has to define what makes it different: its own render output. Any new page gets the same treatment by extending the same mixin instead of copying lifecycle code around.
 
 ## State: signals instead of a state library
 
@@ -339,7 +349,7 @@ export const addTodo = (text: string) => {
 };
 ```
 
-`@lit-labs/preact-signals` gives Lit fine-grained reactivity: a component only re-renders when a signal it actually reads changes, not on every update to some shared store object. A `store.ts` file like this ends up being the entire state layer for a feature — no reducers, no actions, no boilerplate to wire a provider through the tree, since signals work outside the component tree entirely.
+`@lit-labs/preact-signals` gives Lit fine-grained reactivity: a component only re-renders when a signal it actually reads changes, not on every update to some shared store object. A `store.ts` file like this ends up being the entire state layer for a feature: just a signal and a couple of functions, since signals work outside the component tree and don't need a provider wired through it.
 
 ## When Lit is the right call
 
@@ -347,22 +357,22 @@ The talk closes on this, and it's worth being direct about it here too, since "w
 
 Lit is a strong choice when:
 
-- You want components that outlive whatever framework is popular in three years — they're standard custom elements, so they work in React, Vue, Angular, or plain HTML without an adapter.
+- You want components that outlive whatever framework is popular in three years. They're standard custom elements, so they work in React, Vue, Angular, or plain HTML without an adapter.
 - You're building a design system or shared component library that multiple teams, on multiple stacks, need to consume.
-- Bundle size and time-to-interactive matter — Lit's footprint is around 5KB, which is hard to match with a full framework.
+- Bundle size and time-to-interactive matter. Lit's footprint is around 5KB, which is hard to match with a full framework.
 - You're building micro-frontends and want the pieces loadable independently, without forcing every team onto the same framework version.
 
 Lit is a worse fit when:
 
-- Your team wants a batteries-included framework with strong opinions on everything — routing, forms, state, testing all bundled and blessed. Lit gives you primitives and lets you choose the rest, which is a feature until it isn't.
+- Your team wants a batteries-included framework with strong opinions on everything: routing, forms, state, and testing, all bundled and blessed. Lit gives you primitives and lets you choose the rest, which is a feature until it isn't.
 - You're hiring for a stack and want the largest possible pool of engineers who already know it. React and Angular still win there by a wide margin.
 - The app is small enough that reaching for any architecture pattern, Lit's included, is overkill next to a single HTML file and some JavaScript.
 
-Most of the apps I build land in the first list, which is why this has become my default for anything beyond a handful of components.
+Most of the apps I build fit the first list, and Lit has become my default for anything beyond a handful of components.
 
 ## Try it yourself
 
-Everything above — the App Shell structure, routing, context, tasks, the ViewMixin pattern, signals — is packaged into a GitHub template so you don't have to assemble it from scratch. It's navigation-ready, set up to host micro-frontends, and deliberately leaves gaps for you to fill in rather than making every decision for you.
+Everything above (the App Shell structure, routing, context, tasks, the ViewMixin pattern, signals) is packaged into a GitHub template so you don't have to assemble it from scratch. It's navigation-ready and set up to host micro-frontends, and it deliberately leaves gaps for you to fill in rather than making every decision for you.
 
 If you'd rather click through the actual deck than read this whole post, the slides are live too.
 
