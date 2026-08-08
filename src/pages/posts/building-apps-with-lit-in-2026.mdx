@@ -374,6 +374,18 @@ Most of the apps I build fit the first list, and Lit has become my default for a
 
 Everything above (the App Shell structure, routing, context, tasks, the ViewMixin pattern, signals) is packaged into a GitHub template so you don't have to assemble it from scratch. It's navigation-ready and set up to host micro-frontends, and it deliberately leaves gaps for you to fill in rather than making every decision for you.
 
+If you'd rather skip cloning a template by hand, I also built a CLI that scaffolds one for you: `@quincarter/create-lit-app`. It's an interactive prompt, arrow keys and all, that walks you through picking a full App Shell Starter, a blank App Shell Host, or a custom selection where it resolves the dependencies for you.
+
+```bash
+npx @quincarter/create-lit-app my-app-shell
+```
+
+It also takes flags if you'd rather skip the prompts entirely: `--template` picks the preset, `--pm` picks your package manager, `--router`/`--no-router` and `--signals`/`--no-signals` toggle those pieces individually, and `--yes` runs the whole thing non-interactively with defaults.
+
+<LinkPreview title="create-lit-app" href="https://github.com/quincarter/create-lit-app" img="/assets/images/github-icon.png" description="The source for the create-lit-app CLI: an interactive scaffolder for the App Shell pattern, with flags for non-interactive use."/>
+
+<LinkPreview title="@quincarter/create-lit-app on npm" href="https://www.npmjs.com/package/@quincarter/create-lit-app" img="/assets/images/github-icon.png" description="The published npm package. Run it with npx, no install required."/>
+
 If you'd rather click through the actual deck than read this whole post, the slides are live too.
 
 <LinkPreview title="Building Apps with Lit Element in 2026 — Slides" href="https://quincarter.github.io/building-with-lit-in-2026-presentation/1" img="/assets/images/building-with-lit-cover.png" description="The live Slidev deck for this talk, as presented at Capital One's Async Live conference and the RVA.js Meetup."/>
