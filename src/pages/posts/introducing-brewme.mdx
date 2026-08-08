@@ -25,9 +25,15 @@ I've rebuilt it twice since then. The second time I got it wrong before I got it
 
 ## What's actually in the app
 
+I'm a better engineer now than I was when I wrote the Ionic version, and it shows in how this one is put together. My patterns are cleaner, components are actually reusable instead of copy-pasted with small tweaks, and I have a much better mental model of the data now. That's what let me link brew calculations to specific brew types, and tie those brew types into curated guides and recipes, instead of the calculator and the guides being two separate features that happened to live in the same app.
+
 Open BrewMe and you land on the brew calculator. Punch in a dose or a target yield and it works out your ratio as you type, no submit button. Every brew you save shows up in a recent brews list on the home screen, along with a day streak, so the app tracks your habit without making you think about tracking anything.
 
 Beyond the calculator there are brew guides for V60, Chemex, French Press, Kalita Wave, Origami, Hario Switch, Clever Dripper, cold brew, drip, AeroPress (with World AeroPress Championship winning recipes you can browse by year), and espresso. The espresso guide has the most in it - video walkthroughs from Lance Hedrick and James Hoffmann, plus a glossary that defines the terms those videos assume you already know, things like RDT, WDT, tamping, channeling, and extraction. It's the kind of thing that helps when your shot tastes sour and you're not sure why.
+
+The guides are actually one of the features I'm proudest of in this version. The Ionic app had the same idea on paper, but I never built a good path that actually got people into the guides - they existed, but nothing pointed you toward them. I'm still adding to them and improving them regularly, mostly so someone new to a brew method doesn't feel stuck trying to learn it. Saved brews link back to their guide too, so if you've got a V60 recipe saved, it's connected to the V60 guide instead of floating there on its own.
+
+Everything in BrewMe is local to your device, but I still wanted a way to share a brew with someone else. Saved brews can be shared as a link - I did this with query parameters that fill in a shared-brew view on the other end, and whoever opens it can save that brew straight into their own library if they want it. No accounts involved, the data just travels in the URL.
 
 ## No more login screen
 
