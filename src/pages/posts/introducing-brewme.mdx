@@ -1,0 +1,50 @@
+---
+layout: '@/templates/BasePost.astro'
+title: 'Meet BrewMe: A Local-First Coffee Companion'
+description: The story of how I rebuilt my coffee brewing app twice, from a stale Ionic/Angular hybrid, through an overcomplicated Next.js version that cost me a lot of users, to a back-to-basics Lit Element rewrite that finally dropped the login screen for good.
+pubDate: 2026-08-08T12:00:00Z
+imgSrc: '/assets/images/brewme-share.png'
+imgAlt: 'BrewMe promo graphic: "Brew ratios, solved." with screenshots of the calculator, saved ratios, and home screen'
+---
+
+import LinkPreview from "../../partials/LinkPreview.tsx";
+
+## A Chemex and some bad math
+
+My Chemex problem was simple and annoying. Every pour-over came out a little different, sometimes bright and thin, sometimes muddy and over-extracted, and the only thing that changed between cups was how carelessly I'd eyeballed the water. I started jotting ratios in my phone's notes app just to keep myself honest. Notes turned into a tiny calculator. The calculator turned into an app I put in front of a few friends, and they put it in front of r/coffee and r/espresso. Pretty soon a tool I'd built to fix my own bad pours had thousands of people using it.
+
+I've rebuilt it twice since then. The second time I got it wrong before I got it right.
+
+## Three versions, one lesson
+
+**V1** was an Ionic app written in Angular, and it stuck around for years with real, loyal users. It just got stale over time, the way most apps do when you stop touching them and everything around them keeps moving.
+
+**V2** moved to Next.js, and this is the version I'd take back if I could. Instead of just modernizing the same tool, I added a whole layer of coffee roasters and coffee shops on top of it. The brew calculator, which was the entire reason people used the app, ended up buried a few taps deep. People noticed, and told me about it - a lot of them, not gently. I'd overcomplicated the one thing I'd already solved, and I lost a good chunk of my user base over it.
+
+**V3** is what's live now: a rewrite in Lit, using standard Web Components with signals for state instead of a framework sitting on top of the DOM. Functionally it's closer to V1 than V2 - same simple calculator-first app people liked in the first place, just faster to load and a lot less code for me to maintain since Angular isn't in the picture anymore.
+
+## What's actually in the app
+
+I'm a better engineer now than I was when I wrote the Ionic version, and it shows in how this one is put together. My patterns are cleaner, components are actually reusable instead of copy-pasted with small tweaks, and I have a much better mental model of the data now. That's what let me link brew calculations to specific brew types, and tie those brew types into curated guides and recipes, instead of the calculator and the guides being two separate features that happened to live in the same app.
+
+Open BrewMe and you land on the brew calculator. Punch in a dose or a target yield and it works out your ratio as you type, no submit button. Every brew you save shows up in a recent brews list on the home screen, along with a day streak, so the app tracks your habit without making you think about tracking anything.
+
+Beyond the calculator there are brew guides for V60, Chemex, French Press, Kalita Wave, Origami, Hario Switch, Clever Dripper, cold brew, drip, AeroPress (with World AeroPress Championship winning recipes you can browse by year), and espresso. The espresso guide has the most in it - video walkthroughs from Lance Hedrick and James Hoffmann, plus a glossary that defines the terms those videos assume you already know, things like RDT, WDT, tamping, channeling, and extraction. It's the kind of thing that helps when your shot tastes sour and you're not sure why.
+
+The guides are actually one of the features I'm proudest of in this version. The Ionic app had the same idea on paper, but I never built a good path that actually got people into the guides - they existed, but nothing pointed you toward them. I'm still adding to them and improving them regularly, mostly so someone new to a brew method doesn't feel stuck trying to learn it. Saved brews link back to their guide too, so if you've got a V60 recipe saved, it's connected to the V60 guide instead of floating there on its own.
+
+Everything in BrewMe is local to your device, but I still wanted a way to share a brew with someone else. Saved brews can be shared as a link - I did this with query parameters that fill in a shared-brew view on the other end, and whoever opens it can save that brew straight into their own library if they want it. No accounts involved, the data just travels in the URL.
+
+## No more login screen
+
+Both the Ionic and Next.js versions made you create an account before you could do anything with the app. Looking back, I think that cost me more users than I realized at the time - asking someone for their information before they've calculated a single ratio is a big ask for a free tool. The Lit rewrite drops that. No sign-up, no login. Every saved brew, streak, and preference lives in your browser's local storage, and nothing is synced anywhere because there's no server to sync it to.
+
+It's also a PWA, so you can install it to your home screen and it works offline once it's loaded - useful if your kitchen wifi is bad or you're brewing somewhere with no signal.
+
+## Free and open source
+
+BrewMe is free, and the Lit rewrite is open source under the MIT license. If you want to see how it's built, or you think a brew method is missing a guide, the repo is public.
+
+<LinkPreview title="brew-me-app-lit" href="https://github.com/quincarter/brew-me-app-lit" img="/assets/images/github-icon.png" description="The source for BrewMe's current Lit Element rewrite — Lit 3, TypeScript, Vite, and IndexedDB, with no account system and no backend."/>
+
+<LinkPreview title="BrewMe" href="https://brewme.app" img="/assets/images/brew-me-icon.png" description="A free, local-first coffee brewing companion — brew calculator, recent brews history, and guides for every method, no login required."/>
