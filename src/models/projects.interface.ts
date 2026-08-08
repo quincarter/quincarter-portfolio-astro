@@ -27,6 +27,8 @@ export declare type Color =
 export interface Project {
 	name: string;
 	description: string;
+	descriptionLinkText?: string;
+	descriptionLinkHref?: string;
 	image: CustomImage;
 	link: string;
 	category: Category[];

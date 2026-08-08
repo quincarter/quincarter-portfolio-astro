@@ -1,7 +1,28 @@
-import type { Category, Project } from '../../models/projects.interface';
-import { CATEGORY_DATA as cat } from '../../models/projects.interface';
+import type { Category, Project } from '../models/projects.interface';
+import { CATEGORY_DATA as cat } from '../models/projects.interface';
 
 export const PROJECT_DATA: Project[] = [
+	{
+		name: `Brew Me App - Newly Re-Written and open-sourced.`,
+		description: `This is a hobby project that turned into something much larger. 
+    It's a simple application that I started out of necessity to calculate accurate 
+    coffee brews with my Chemex. I found out later that all coffee methods needed exact 
+    measurements for consistency across the board. I have productionized this application 
+    and shared it in my old facebook groups and on r/espresso and r/coffee. This new version has been completely re-imagined and gone back-to-basics. For more information, visit`,
+		descriptionLinkText: 'here.',
+		descriptionLinkHref: '/posts/introducing-brewme',
+		image: {
+			src: '/assets/images/brew-me-icon.png',
+			alt: 'brewme icon',
+		},
+		link: 'https://brewme.app',
+		category: [
+			cat.litElement as Category,
+			cat.typeScript as Category,
+			cat.webComponents as Category,
+			cat.performance as Category,
+		],
+	},
 	{
 		name: 'Card Architecture Discovery Portal',
 		description: `
@@ -158,29 +179,6 @@ export const PROJECT_DATA: Project[] = [
 			cat.typeScript as Category,
 			cat.webComponents as Category,
 			cat.performance as Category,
-		],
-	},
-	{
-		name: `Brew Me App`,
-		description: `This is a hobby project that turned into something much larger. 
-    It's a simple application that I started out of necessity to calculate accurate 
-    coffee brews with my Chemex. I found out later that all coffee methods needed exact 
-    measurements for consistency across the board. I have productionized this application 
-    and shared it in my old facebook groups and on r/espresso and r/coffee. 
-    It's taken on about 2000 daily active users and people seem to love this thing. 
-    I do my best to support it in my free time. I have a redesign of it stashed on my 
-    local but I have not had time lately to work on it.`,
-		image: {
-			src: '/assets/images/brew-me-icon.png',
-			alt: 'brewme icon',
-		},
-		link: 'https://brewme.app',
-		category: [
-			cat.angular as Category,
-			cat.ionicFramework as Category,
-			cat.litElement as Category,
-			cat.typeScript as Category,
-			cat.webComponents as Category,
 		],
 	},
 ];

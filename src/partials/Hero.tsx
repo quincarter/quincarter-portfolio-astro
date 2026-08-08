@@ -5,7 +5,7 @@ import {
 	Section,
 } from 'astro-boilerplate-components';
 
-import { MAIN_HERO_DATA } from '@/pages/page-data/main-hero';
+import { MAIN_HERO_DATA } from '@/data/main-hero';
 
 import styles from '../styles/hero.module.css';
 
