@@ -15,30 +15,30 @@ Both crowds were great, and the RVA.js one especially so. That group is always w
 
 ## Where Lit actually comes from
 
-One thing that came up at the meetup: a decent number of people didn't know Lit came out of Google's Polymer project. Polymer was Google's early, ambitious attempt at making Web Components practical to build real apps with, and `PolymerElement` was its internal base class for components, built directly on top of the platform's `HTMLElement`. When the Polymer team rethought that base class to be smaller and more focused, `LitElement` is what came out the other side. Lit is Polymer's successor, not a fresh unrelated project, and as of this writing it's on v3. That lineage matters because it explains why Lit feels less like a framework and more like a thin, well-designed layer over what the browser already gives you.
+One thing that came up at the meetup: a decent number of people didn't know Lit came out of Google's Polymer project. Polymer was Google's early, ambitious attempt at making Web Components practical to build real apps with, and `PolymerElement` was its internal base class for components, built directly on top of the platform's `HTMLElement`. When the Polymer team rethought that base class to be smaller and more focused, `LitElement` is what came out the other side. Lit is Polymer's successor, not a fresh unrelated project, and as of this writing it's on v3. That lineage matters because it explains why Lit feels less like a framework and more like a thin, well-designed layer over what the browser already has.
 
 ## The landscape, and why Web Components still have a seat at the table
 
-React, Angular, Vue, and Svelte all solve the same basic problem in different ways. Each gives you a component model, a way to declare your UI, some form of dependency management, wrapped up in a development experience people like. Every one of them is a legitimate, well-supported choice.
+React, Angular, Vue, and Svelte all solve the same basic problem in different ways. Each of them has a component model, a way to declare your UI, some form of dependency management, wrapped up in a development experience people like. Every one of them is a legitimate, well-supported choice.
 
-But here's the part I really want to land: every one of those frameworks needs a separate runtime just to render a component, and React, Angular, and Vue each come with their own. That runtime does real work on every render, building and diffing a virtual copy of the UI before anything actually touches the page. React's VDOM gets sold as a performance feature, and historically it was, compared to the naive DOM manipulation it replaced. But it's still overhead that exists purely because React doesn't render directly. You're paying a tax to get to the DOM. The DOM isn't slow. The extra layer sitting between your code and it is what costs you.
+Here's the part I really want to land: React, Angular, and Vue each need a separate runtime just to render a single component, and that runtime does real work on every render. In the case of React, before anything touches the page, it builds a virtual copy of the UI and diffs it against the last one. React's VDOM gets sold as a performance feature, and historically it was, compared to the native DOM manipulation it replaced. It is still overhead, and it exists purely because React doesn't render directly. Those framework runtimes are also just more JavaScript: more code the browser has to download, parse, and compile before your app can do anything (bogging down the main thread - enter my workers talk. heh.), on top of whatever your app itself ships. The DOM is not slow; the extra layer sitting between the code and the DOM is where the cost is, and that layer is the tax paid just to get there.
 
-Web Components don't have that layer. A custom element is `HTMLElement`, extended. The browser is the runtime. There's no virtual DOM to diff and no framework runtime to boot before a component can render, because rendering was never abstracted away from the platform to begin with. Lit sits on top of that with reactive properties and an efficient template renderer, making the platform's own rendering faster and easier to work with instead of building a parallel rendering engine. So Lit ends up lighter and faster: there's simply less standing between your code and the screen.
+Web Components don't have that layer. A custom element is `HTMLElement`, extended. The browser is the runtime. There's no virtual DOM to diff and no framework runtime to boot before a component can render, because rendering was never abstracted away from the platform to begin with. Frameworks of old were solving problems the Browser didn't support yet. It's 2026 now. We can do better y'all. Enter Lit Element. Lit sits on top of that with reactive properties and an efficient template renderer, making the platform's own rendering faster and easier to work with instead of building a parallel rendering engine. So Lit ends up lighter and faster: there's simply less standing between your code and the screen.
 
-Angular deserves a fair callout here too, because its biggest weakness is also one of its biggest strengths. Angular gives you a lot out of the box: routing, forms, dependency injection, a whole opinionated structure for how an app gets put together. For a large team building a large app, that structure is valuable. It's a lot of decisions you don't have to make from scratch. But most components, and plenty of applications, don't need that. Bringing in a full framework's worth of conventions and runtime to build one dropdown, or one dashboard widget, is bringing a lot more than the job asked for.
+Angular deserves a fair callout here too, because its biggest weakness is also one of its biggest strengths. Angular ships with a lot out of the box: routing, forms, dependency injection, a whole opinionated structure for how an app gets put together. For a large team building a large app, that structure is valuable. It's a lot of decisions that people don't have to make from scratch; but most components, and plenty of applications, do not need that. Bringing in a full framework's worth of conventions and runtime to build one dropdown, or one dashboard widget, is bringing a lot more than the job asked for.
 
-Which gets at the point I actually want people to leave with: there isn't a single right tool, there's the right tool for the person and the problem in front of them. If a team knows React deeply and building in React lets them ship something solid, that's the right call for them, full stop. The tool that matters is the one you understand well enough to use correctly. Where I see Lit fit best is exactly where a full framework's runtime and conventions cost more than they give back: component libraries, micro-frontends, and small-to-mid apps that don't need Angular's scaffolding or React's ecosystem to get built well.
+Which gets at the point that people should leave this post understanding: there is not a single right tool, there's the right tool for the person and the problem in front of them. If a team knows React deeply and building in React lets them ship something solid, that's the right call for them, full stop. The tool that matters is the one that is understood well enough to use correctly. Where Lit fits best is exactly where a full framework's runtime and conventions cost more than they give back: component libraries, micro-frontends, and small-to-mid apps that don't need Angular's scaffolding or React's ecosystem to get built well.
 
 That "as long as you understand it" part matters more now than it used to. AI tools can help someone make sense of an unfamiliar pattern. I think that's a good use of them.
 
-Frontend engineering is a craft, closer to an art than people give it credit for, and AI still isn't particularly good at it. It can write code that runs. Code that runs isn't the same as code that reads well or survives contact with real users. CSS is where that gap shows up the most, and it's where frontend engineering gets to shine. I made that argument at length in [a separate talk on expressing yourself with CSS](/talks/expressing-yourself-with-css-in-2026), if you want the longer version of it.
+Frontend engineering is a craft, closer to an art than people give it credit for, and AI still isn't particularly good at it. It can write code that runs. Code that runs isn't the same as code that reads well or survives contact with real users. CSS is where that gap shows up the most, and it's where frontend engineering gets to shine. I made that argument at length in [a separate talk on expressing yourself with CSS](/talks/expressing-yourself-with-css-in-2026), if people would like to explore more there.
 
 ## What "building an app" actually needs
 
-Components alone don't make an application. To take Lit from "nice way to build a button" to "the thing my whole app is written in," you need answers to the same handful of questions every framework answers for you:
+Components alone don't make an application. To take Lit from "nice way to build a button" to "the thing my whole app is written in," there needs to be answers to the same handful of questions every framework answers for the consumer:
 
 - **Structure**: where does code live, and what's the separation of concerns?
-- **Routing**: how do you handle navigation and deep links?
+- **Routing**: how are navigation and deep links handled?
 - **Data flow**: how does state get from where it lives to where it's rendered, without prop-drilling everything by hand?
 - **State management**: something reactive, without pulling in a large state library for a small app.
 - **A way to standardize views**: so every page doesn't reinvent the same boilerplate.
@@ -74,9 +74,12 @@ The build order I walk through starts with scaffolding the project in Vite and c
 
 ## Routing: two solid options
 
-I cover two routers in the talk, because the right one depends on how much you want the platform to do versus how much control you want over the routing layer.
+I cover two routers in the talk, because the right one depends on how much the platform needs to do versus how much control needs to be had over the routing layer.
 
 **`@lit-labs/router`** is the official, lightweight option. It's declarative, it hooks directly into a Lit component's reactive lifecycle, and it stays out of your way:
+
+>[!WARNING]
+> `@lit-labs/router` is in the "Labs" scope and could be subject to change. It is fairly stable but use in production at your own risk.
 
 ```ts
 // 1. Import the Router
@@ -121,9 +124,12 @@ export class AppShell extends LitElement {
 }
 ```
 
-The routes live wherever `AppShell` is defined, `render` functions return whatever template you want for each path, and `this._router.outlet()` is where the matched route actually paints.
+The routes live wherever `AppShell` is defined, `render` functions return whatever template is defined for each path, and `this._router.outlet()` is where the matched route actually paints.
 
-**Vaadin Router** is the alternative when you want something framework-agnostic with more mileage on nested routes and transitions. It's become something of an industry default for larger Web Component apps outside the Lit ecosystem:
+**Vaadin Router** is the alternative when want something framework-agnostic with more mileage on nested routes and transitions. It's become something of an industry default for larger Web Component apps outside the Lit ecosystem:
+
+>[!NOTE]
+> @vaadin/router is a WebComponent alternative to the vaadin components based in Java. This solution has been very stable and could be used if the previous lit-labs solution is not a viable option in a larger scale, higher-stakes app.
 
 ```ts
 // 1. Import the Router
@@ -247,6 +253,10 @@ render() {
 ```
 
 `args` returns the reactive dependencies for the task. Whenever anything in that array changes, like `this.selectedTodoId` here, the task resets and reruns automatically, saving you from writing a manual `updated()` check. And `render()` forces you to account for all three states: pending, error, and complete. That's the part I like most about it. It gets rid of the "boolean soup" of `isLoading` and `isError` flags that async state accumulates in most frameworks, and it makes it impossible to forget the error case, because the type system won't let you skip it.
+
+For more information and more in depth look at lit/context, please read my article I wrote that was blessed by the Lit maintainers. 
+
+<LinkPreview  title="Understanding Component State and Using Lit Element Context with Web Components" href="https://medium.com/@quincarter/understanding-component-state-and-using-lit-element-context-40981e808535" img="/assets/images/lit-context.png" description="How to use Component State with Lit Element and Lit Context API. This utilizes native browser utilities and tools to better manage the state of Web Components."/>
 
 ## Standardizing views with a mixin
 

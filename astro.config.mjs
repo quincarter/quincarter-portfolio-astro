@@ -5,6 +5,8 @@ import tailwind from '@tailwindcss/vite';
 import { defineConfig } from 'astro/config';
 import robotsTxt from 'astro-robots-txt';
 
+import { remarkCallouts } from './src/plugins/remark-callouts.mjs';
+
 // https://astro.build/config
 export default defineConfig({
 	// base: '.', // Set a path prefix.
@@ -18,6 +20,7 @@ export default defineConfig({
 			// https://github.com/shikijs/shiki/blob/main/docs/themes.md
 			theme: 'monokai',
 		},
+		remarkPlugins: [remarkCallouts],
 	},
 	vite: {
 		plugins: [tailwind()],
