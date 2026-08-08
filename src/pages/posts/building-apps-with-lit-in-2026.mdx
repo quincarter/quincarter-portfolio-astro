@@ -11,7 +11,7 @@ import LinkPreview from "../../partials/LinkPreview.tsx";
 
 I gave this talk twice this year. First in April at Capital One's internal conference, Async Live, to a room of engineers who mostly already knew what a Web Component was. Then again this week at the RVA.js Meetup, where the crowd was a real mix. Some people did React every day, a couple were Angular folks, and a few had never touched a Web Component at all. That second audience changed the talk on the fly. Instead of staying in "advanced app architecture" mode the whole time, I ended up spending more of the session just walking through what Lit actually is as a language before getting back to the app-shell stuff.
 
-Both crowds were great, and the RVA.js one especially so. That group is always welcoming, and the questions afterward ran long in a good way. But it reminded me that Lit's popularity doesn't match how good it is, so I wanted to write up an expanded version of the talk here: the same architecture and code from the slides, with more explanation than I had time for on stage.
+Both crowds were great, and the RVA.js one especially so. That group is always welcoming, and the questions afterward ran long in a good way. But it reminded me that Lit's popularity doesn't match how good it is, so I wanted to write up an expanded version of the talk here: the same architecture and code from the slides, with more explanation than I had time for when I was presenting in person.
 
 ## Where Lit actually comes from
 
@@ -70,7 +70,7 @@ src
 
 `app-shell.ts` is the root: it owns routing and provides the app's shared contexts. `components/` holds atomic, reusable UI that doesn't know anything about the app around it. `views/` holds page-level components, the things routes actually render. `shared/` is the connective tissue, holding route config, context definitions, state stores, and utility functions that don't belong to any one view.
 
-The build order I walk through on stage starts with scaffolding the project in Vite and clearing out the starter boilerplate. From there I wire up `@lit/context` for dependency injection, then add `@lit-labs/router` for navigation. Once routing exists, I add a navigation config and a navigation context, build out a page, and finally wrap it with a `ViewMixin` so every new page gets the same context-consumption and lifecycle behavior for free. Each of those pieces gets its own section below.
+The build order I walk through starts with scaffolding the project in Vite and clearing out the starter boilerplate. From there I wire up `@lit/context` for dependency injection, then add `@lit-labs/router` for navigation. Once routing exists, I add a navigation config and a navigation context, build out a page, and finally wrap it with a `ViewMixin` so every new page gets the same context-consumption and lifecycle behavior for free. Each of those pieces gets its own section below.
 
 ## Routing: two solid options
 
