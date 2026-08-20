@@ -24,6 +24,36 @@ export const PROJECT_DATA: Project[] = [
 		],
 	},
 	{
+		name: 'Decluttering Selector for Home Assistant (Open Source)',
+		description: `An open-source Home Assistant Lovelace card that registers your decluttering-card templates directly into Home Assistant's native "Add Card" picker, complete with live previews and pre-filled configs. No more hand-writing YAML for repeated dashboard templates - this closes a real gap in the Home Assistant ecosystem using only the same public extension points other custom cards rely on.`,
+		image: {
+			src: '/assets/images/github-icon.png',
+			alt: 'github logo',
+		},
+		link: 'https://github.com/quincarter/hass-decluttering-card-explorer',
+		category: [
+			cat.homeAssistant as Category,
+			cat.typeScript as Category,
+			cat.webComponents as Category,
+			cat.openSource as Category,
+		],
+	},
+	{
+		name: 'create-lit-app CLI (Open Source)',
+		description: `A deterministic CLI scaffolding tool (npx @quincarter/create-lit-app) that spins up production-ready Lit Element applications with an App Shell architecture, Preact Signals, Lit Context, and Lit Router. Includes an interactive TUI for picking starter presets or toggling individual architectural features, plus a full set of CLI flags for non-interactive and CI use.`,
+		image: {
+			src: '/assets/images/github-icon.png',
+			alt: 'github logo',
+		},
+		link: 'https://github.com/quincarter/create-lit-app',
+		category: [
+			cat.shellScript as Category,
+			cat.litElement as Category,
+			cat.webComponents as Category,
+			cat.openSource as Category,
+		],
+	},
+	{
 		name: 'Card Architecture Discovery Portal',
 		description: `
     This is a greenfield project that was started by directive of our EVP Arjun D. to better understand where we are at as an organization in Card Tech as far as Architectural Quality. This portal became a one stop shop for all things ASPIRE - our architecture framework for building architecturally sound applications. Originally built as an astro application, I converted this to use React with Tanstack Router over the course of building it as it became very interactive. I scaled this from the ground up and architected it myself from the frontend tech used, pipeline configuration, and backend technology used to determine the best cohesive dev environment. 
@@ -179,36 +209,6 @@ export const PROJECT_DATA: Project[] = [
 			cat.typeScript as Category,
 			cat.webComponents as Category,
 			cat.performance as Category,
-		],
-	},
-	{
-		name: 'Decluttering Selector for Home Assistant (Open Source)',
-		description: `An open-source Home Assistant Lovelace card that registers your decluttering-card templates directly into Home Assistant's native "Add Card" picker, complete with live previews and pre-filled configs. No more hand-writing YAML for repeated dashboard templates - this closes a real gap in the Home Assistant ecosystem using only the same public extension points other custom cards rely on.`,
-		image: {
-			src: '/assets/images/github-icon.png',
-			alt: 'github logo',
-		},
-		link: 'https://github.com/quincarter/hass-decluttering-card-explorer',
-		category: [
-			cat.homeAssistant as Category,
-			cat.typeScript as Category,
-			cat.webComponents as Category,
-			cat.openSource as Category,
-		],
-	},
-	{
-		name: 'create-lit-app CLI (Open Source)',
-		description: `A deterministic CLI scaffolding tool (npx @quincarter/create-lit-app) that spins up production-ready Lit Element applications with an App Shell architecture, Preact Signals, Lit Context, and Lit Router. Includes an interactive TUI for picking starter presets or toggling individual architectural features, plus a full set of CLI flags for non-interactive and CI use.`,
-		image: {
-			src: '/assets/images/github-icon.png',
-			alt: 'github logo',
-		},
-		link: 'https://github.com/quincarter/create-lit-app',
-		category: [
-			cat.shellScript as Category,
-			cat.litElement as Category,
-			cat.webComponents as Category,
-			cat.openSource as Category,
 		],
 	},
 	{
