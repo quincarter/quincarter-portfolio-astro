@@ -181,4 +181,48 @@ export const PROJECT_DATA: Project[] = [
 			cat.performance as Category,
 		],
 	},
+	{
+		name: 'Decluttering Selector for Home Assistant (Open Source)',
+		description: `An open-source Home Assistant Lovelace card that registers your decluttering-card templates directly into Home Assistant's native "Add Card" picker, complete with live previews and pre-filled configs. No more hand-writing YAML for repeated dashboard templates - this closes a real gap in the Home Assistant ecosystem using only the same public extension points other custom cards rely on.`,
+		image: {
+			src: '/assets/images/github-icon.png',
+			alt: 'github logo',
+		},
+		link: 'https://github.com/quincarter/hass-decluttering-card-explorer',
+		category: [
+			cat.homeAssistant as Category,
+			cat.typeScript as Category,
+			cat.webComponents as Category,
+			cat.openSource as Category,
+		],
+	},
+	{
+		name: 'create-lit-app CLI (Open Source)',
+		description: `A deterministic CLI scaffolding tool (npx @quincarter/create-lit-app) that spins up production-ready Lit Element applications with an App Shell architecture, Preact Signals, Lit Context, and Lit Router. Includes an interactive TUI for picking starter presets or toggling individual architectural features, plus a full set of CLI flags for non-interactive and CI use.`,
+		image: {
+			src: '/assets/images/github-icon.png',
+			alt: 'github logo',
+		},
+		link: 'https://github.com/quincarter/create-lit-app',
+		category: [
+			cat.shellScript as Category,
+			cat.litElement as Category,
+			cat.webComponents as Category,
+			cat.openSource as Category,
+		],
+	},
+	{
+		name: 'LLMs.txt Files & Converters (Open Source)',
+		description: `A collection of Python scripts and pre-converted llms.txt context files aimed at giving LLMs and AI coding assistants better guardrails and grounding when working against specific frameworks and APIs, including Lit, NestJS, TypeScript, React, and Supabase. Represents an overall methodology for converting docs, codebases, and API specs into clean, ingestible context for AI tooling.`,
+		image: {
+			src: '/assets/images/github-icon.png',
+			alt: 'github logo',
+		},
+		link: 'https://github.com/quincarter/llms-txt-files-and-converters',
+		category: [
+			cat.llmTooling as Category,
+			cat.python as Category,
+			cat.openSource as Category,
+		],
+	},
 ];

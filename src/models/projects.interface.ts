@@ -117,4 +117,24 @@ export const CATEGORY_DATA: CategoryData = {
 		name: 'Monorepo',
 		color: ColorTags.INDIGO,
 	},
+	homeAssistant: {
+		name: 'Home Assistant',
+		color: ColorTags.ORANGE,
+	},
+	openSource: {
+		name: 'Open Source',
+		color: ColorTags.GREEN,
+	},
+	shellScript: {
+		name: 'Shell Script',
+		color: ColorTags.SLATE,
+	},
+	llmTooling: {
+		name: 'LLM Tooling',
+		color: ColorTags.ZINC,
+	},
+	python: {
+		name: 'Python',
+		color: ColorTags.STONE,
+	},
 };
