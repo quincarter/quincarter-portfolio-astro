@@ -44,8 +44,8 @@ export const PROJECT_DATA: Project[] = [
 		name: 'Decluttering Selector for Home Assistant (Open Source)',
 		description: `An open-source Home Assistant Lovelace card that registers your decluttering-card templates directly into Home Assistant's native "Add Card" picker, complete with live previews and pre-filled configs. No more hand-writing YAML for repeated dashboard templates - this closes a real gap in the Home Assistant ecosystem using only the same public extension points other custom cards rely on.`,
 		image: {
-			src: '/assets/images/github-icon.png',
-			alt: 'github logo',
+			src: '/assets/images/home-assistant-logo.svg',
+			alt: 'Home Assistant logo',
 		},
 		link: 'https://github.com/quincarter/hass-decluttering-card-explorer',
 		category: [
