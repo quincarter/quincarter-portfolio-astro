@@ -24,11 +24,28 @@ export const PROJECT_DATA: Project[] = [
 		],
 	},
 	{
-		name: 'Decluttering Selector for Home Assistant (Open Source)',
-		description: `An open-source Home Assistant Lovelace card that registers your decluttering-card templates directly into Home Assistant's native "Add Card" picker, complete with live previews and pre-filled configs. No more hand-writing YAML for repeated dashboard templates - this closes a real gap in the Home Assistant ecosystem using only the same public extension points other custom cards rely on.`,
+		name: 'dnd-syncer',
+		description: `A Focus Mode / Do Not Disturb syncer between an Android phone and its associated computers, keeping DND status in lockstep across devices. Built as a universal desktop companion app (Windows, macOS, and Linux) paired with an Android app. This is my first Rust, Kotlin, and Tauri project, and it's been a fun one - it ties together everything I know from years of web development and finally puts it to work gluing real hardware together with a seamless UI and backend.`,
 		image: {
 			src: '/assets/images/github-icon.png',
 			alt: 'github logo',
+		},
+		link: 'https://github.com/quincarter/dnd-syncer',
+		category: [
+			cat.rust as Category,
+			cat.kotlin as Category,
+			cat.tauri as Category,
+			cat.react as Category,
+			cat.typeScript as Category,
+			cat.javascript as Category,
+		],
+	},
+	{
+		name: 'Decluttering Selector for Home Assistant (Open Source)',
+		description: `An open-source Home Assistant Lovelace card that registers your decluttering-card templates directly into Home Assistant's native "Add Card" picker, complete with live previews and pre-filled configs. No more hand-writing YAML for repeated dashboard templates - this closes a real gap in the Home Assistant ecosystem using only the same public extension points other custom cards rely on.`,
+		image: {
+			src: '/assets/images/home-assistant-logo.svg',
+			alt: 'Home Assistant logo',
 		},
 		link: 'https://github.com/quincarter/hass-decluttering-card-explorer',
 		category: [
