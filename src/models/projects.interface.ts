@@ -137,4 +137,16 @@ export const CATEGORY_DATA: CategoryData = {
 		name: 'Python',
 		color: ColorTags.STONE,
 	},
+	rust: {
+		name: 'Rust',
+		color: ColorTags.ORANGE,
+	},
+	kotlin: {
+		name: 'Kotlin',
+		color: ColorTags.PURPLE,
+	},
+	tauri: {
+		name: 'Tauri',
+		color: ColorTags.TEAL,
+	},
 };

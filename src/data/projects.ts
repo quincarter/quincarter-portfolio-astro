@@ -225,4 +225,21 @@ export const PROJECT_DATA: Project[] = [
 			cat.openSource as Category,
 		],
 	},
+	{
+		name: 'dnd-syncer',
+		description: `A Focus Mode / Do Not Disturb syncer between an Android phone and its associated computers, keeping DND status in lockstep across devices. Built as a universal desktop companion app (Windows, macOS, and Linux) paired with an Android app. This is my first Rust, Kotlin, and Tauri project, and it's been a fun one - it ties together everything I know from years of web development and finally puts it to work gluing real hardware together with a seamless UI and backend.`,
+		image: {
+			src: '/assets/images/github-icon.png',
+			alt: 'github logo',
+		},
+		link: 'https://github.com/quincarter/dnd-syncer',
+		category: [
+			cat.rust as Category,
+			cat.kotlin as Category,
+			cat.tauri as Category,
+			cat.react as Category,
+			cat.typeScript as Category,
+			cat.javascript as Category,
+		],
+	},
 ];
