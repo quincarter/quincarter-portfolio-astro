@@ -1,0 +1,83 @@
+---
+layout: '@/templates/BasePost.astro'
+title: 'New Role, Same Mindset: what Frontend Taught Me About Developer Experience Work'
+description: I recently moved into a role leaning heavily on Docker, devcontainers, and overall Developer Experience work after spending most of my career in frontend engineering. The tools changed, but the job;  making things easier for the people who use what I build, didn't.
+pubDate: 2026-08-31T12:00:00Z
+imgSrc: '/assets/images/bitmoji-cat-desk.png'
+imgAlt: 'Bitmoji of Quin Carter with a cat next to him on top of his laptop keyboard.'
+---
+import LinkPreview from "../../partials/LinkPreview.tsx";
+
+> Apparently my Bitmoji changed. I hate it. Why'd they do that? Oh well. :: sigh :: This is affecting my entire site theme now. 
+
+## A new stack, on paper
+
+I recently changed roles at work, and the day-to-day looks pretty different now. At first, I thought I'd miss the UI work. It turns out that the goal is the same, just the vessel I use to deliver it is different. On paper, it looks like a completely different job. In practice, it hasn't felt that different at all.
+
+I am working really heavily in Developer Experience at my company now, leaning into the way we actually build software. I went from working almost exclusively on frontend technologies, to Dockerfiles, Devcontainers, building image pipelines, and writing Python, Go, and Shell scripts. A majority of my career, I have been focused on the User Experience side of things, but I really do not believe that has changed.
+
+## The user just changed... but did it really?
+
+Frontend engineering trained me to think obsessively about one thing: the person on the other side of what I build, and how much friction they hit trying to get something done. That habit didn't go away when I switched stacks - it just pointed at a different person.
+
+In my personal life, I have completely fallen in love with Docker, systems engineering, optimization, and hardware setup. I have always loved that stuff, but it's my zen. It's what I work on at night after the rest of my family are sleeping. That was the entire reason I knew I would eventually find my way in my new role.
+
+When I focused on UI work, I built a career on a performance mindset, understanding the physical devices customers actually hold in their hands. I still believe that if you cater to your lowest-end devices, your app will fly on everything else. That mindset shaped how I built components too: fast-rendering, sometimes offloading work to web workers just because I could. (Aside, yes, web workers in a web component. Am I crazy? Maybe. Workerize everything.) That habit of thinking about the device underneath the code is what set me up to pick up my new world so fast.
+
+<LinkPreview title="Multi-Threading the Web is not so impossible. And WASM is AWSM" href="https://medium.com/@quincarter/wasm-is-awsm-and-multi-threading-the-web-is-not-so-impossible-297870a6c10" img="/assets/images/consider-the-following.webp" description="For the most part, people on the web today just want their sites to work. The web has grown so much in the last 5–8 years. Some people do not even realize how complex websites have gotten, and how much performance is a huge factor in development of the modern web...
+
+"/>
+
+As I moved into my new role, I became surrounded by others that were just as passionate about the inner workings of Docker, package managers, defining standards, and a shared skepticism of AI as I am. It is so refreshing to be surrounded by people that have the same passions as you do, even if it is not about UI/UX, it is about finding that "Good DevEx" that a user will both love, and never bother us about because it Just Works (TM). 
+
+I got extreme imposter syndrome when I first moved into my team because everyone there is so smart. I felt like I did not belong, but I knew I belonged there. Everything we are doing is exactly what I love doing in Software Engineering: user experience. It just has a different face right now.
+
+*Good developer experience is user experience. It's just aimed inward.*
+
+## Where the similarities actually show up
+
+As a frontend-focused engineer, I don't remember touching Docker much once Node.js took over how we built things. The last time I'd used it at work was probably back on a PHP project. (Oh god, did I just say that? Am I old now?) Even after all that time away, it came back like riding a bike, helped along by the homelab tinkering I'd kept up on my own. I still wasn't sure how devcontainers, Dockerfiles, and images actually connected to user experience, but that clicked fast once we started building (my favorite part).
+
+A few things carried over almost directly from UI focus to my new role:
+
+### Onboarding is a first impression. 
+
+A devcontainer that "just works" the first time someone opens the repo is doing the same job as a well-designed empty state or a clean signup flow - it's the first few seconds where someone decides whether this thing is going to be pleasant to work with or a fight. It reminded me of how things were when I was working on the PHP projects. I remember when I basically setup a docker cluster in an interview on the fly because I needed to see the project running (it was a PHP interview and they said it did not need to run, but I took that as a challenge). When I did that, I remember them saying that they had never seen anyone do that in an interview before. 😃 This is completely an aside, but I found out later that they were using docker because of me, in my single interview. You are welcome, unnamed interviewer!
+
+### Defaults matter more than options 
+
+In frontend work, I learned that a sensible default beats a configuration screen almost every time. The same is true for a `docker-compose.yml` or a devcontainer's `postCreateCommand` - most people will never customize it, so the default path has to be the good path. 
+
+### Invisible work is still work
+
+Nobody notices a fast build or a container that starts cleanly. They only notice when it's slow or broken. That's identical to frontend performance work, where the best outcome is a total non-event. The only apps you remember are the ones that are bad, right? The goal with any form of development is you want to offer support, but never need to give it. 
+
+---  
+This really reminds me of learning WebAssembly(WASM) and understanding that whole thing all over again. It's exciting, fun, and has completely reinvigorated my drive for building better software. If you are interested:
+<LinkPreview title="WebAssembly (WASM) is a mystery on the internet" href="https://medium.com/@quincarter/webassembly-wasm-is-a-mystery-on-the-internet-3fc94220fd69" img="/assets/images/wasm.webp" description="If you are like me, and have looked into WebAssembly at all, there are not that many projects out in the world of WASM development willing to share their code or experience. You will not find..."/>
+
+---
+
+## Where it's actually different
+
+I won't pretend this maps onto frontend work perfectly. Frontend rewards you immediately. You tweak something and watch it happen live. Infrastructure work rewards you slowly. A base image change might take a week to prove itself worth doing. Nobody notices when it works - they just have a slightly better week without knowing why.
+
+The debugging loop is different too. A broken frontend component usually announces itself loudly in the browser console, with bright red TYPE ERROR or something. A broken container can fail three layers away from where the actual mistake was made, and figuring out why takes a different kind of patience than tracing state through a component tree.
+
+I'd be remiss if I didn't mention AI here. Working in scripts and configuration all day means I lean on it a lot, mostly because the work is repetitive. The hard part about AI is that it's not deterministic, and a lot of people still don't realize that. Most of my AI use is about making it more deterministic - writing scripts it can call into instead of trusting it to freehand everything. Did you know an "AI tool call" (like when Claude says it made 32 tool calls) is often just a shell script under the hood? ...gonna pause right there for a sec. Yeah, it's just shell scripts. My goal is to have AI call those scripts directly. That way I know exactly what it'll output, and it cuts down on token costs too. "BOOM. Roasted - M. Scott - The Office"
+
+![Michael Scott's "BOOM. Roasted." moment from The Office](/assets/gifs/boom-roasted.gif)
+
+I digress.
+
+## Still the same job, underneath
+
+What I keep coming back to is that the actual skill I've been building for the last 15 or so years is not "frontend engineering," it is caring about the experience of the person who has to use what I make, and being willing to sweat details most people will never consciously notice. That skill transfers. It just points at Docker images and CI pipelines now instead of grids and cards in a UI.
+
+If anything, I think leaning on that mindset is an advantage in this kind of work. A lot of infrastructure and tooling gets built by people who are focused purely on correctness or performance, without much thought for what it feels like to be a developer using it every day. Bringing a UX lens to that, even an internal, developer-facing UX, is still a pretty underused skill in a lot of DevOps and platform work.
+
+New stack, same job: make the thing in front of someone easier to use than it was yesterday. I think that is all we can do as engineers, and I fully believe that if everyone in the engineering space went into problem solving in that way, everyone would walk out happy. 
+
+> [Have a great morning], and in case I don't see ya, good afternoon, good evening, and good night! - Jim Carrey - The Truman Show
+
+![Jim Carrey enthusiastically saying "good afternoon" as Truman Burbank](/assets/gifs/jim-carey-good-afternoon.gif)
