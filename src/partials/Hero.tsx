@@ -53,11 +53,7 @@ const Hero = () => (
 							alt="Linkedin icon"
 						/>
 					</a>
-					<a
-						href="https://app.enhancv.com/share/636d9ae4/?utm_medium=growth&utm_campaign=share-resume&utm_source=dynamic"
-						target="_blank"
-						rel="noopener"
-					>
+					<a href="/resume/">
 						<HeroSocial
 							src="/assets/images/resume-logo.png"
 							alt="Resume icon"
@@ -76,7 +72,7 @@ const Hero = () => (
 					<a
 						target="_blank"
 						rel="noopener"
-						href="https://bsky.app/profile/quincarter.bsky.social"
+						href="https://bsky.app/profile/quincarter.com"
 					>
 						<HeroSocial
 							src="/assets/images/bluesky-logo.png"

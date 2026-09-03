@@ -29,12 +29,7 @@ const Navbar = () => (
 				<NavMenuItem href="https://github.com/quincarter" target="_blank">
 					GitHub
 				</NavMenuItem>
-				<NavMenuItem
-					href="https://app.enhancv.com/share/636d9ae4/?utm_medium=growth&utm_campaign=share-resume&utm_source=dynamic"
-					target="_blank"
-				>
-					Resume
-				</NavMenuItem>
+				<NavMenuItem href="/resume/">Resume</NavMenuItem>
 				<NavMenuItem
 					href="https://discordapp.com/users/266934198055600150"
 					target="_blank"
