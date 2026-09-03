@@ -98,6 +98,8 @@ export const RESUME = {
 				'Angular',
 				'React',
 				'Vue',
+				'Astro',
+				'Tanstack Router',
 				'WebAssembly (WASM)',
 				'Web Workers / Service Workers',
 				'Tailwind CSS',
@@ -124,6 +126,7 @@ export const RESUME = {
 				'Micro-frontends',
 				'DevContainers',
 				'Standard Development Environments',
+				'Open Policy Agent (OPA) / Rego',
 				'CI/CD (Jenkins, Bamboo, GitLab CI)',
 				'Gitflow',
 				'Docker',
@@ -162,7 +165,9 @@ export const RESUME = {
 					location: 'Richmond, VA',
 					bullets: [
 						'Led a brand-new team built from the ground up, standing up both the team and its architectural practice from nothing.',
-						'Built an application and overall architecture that the enterprise adopted as ASPIRE, a standard methodology for building sound architecture across Capital One.',
+						'Built ASPIRE, an in-house architecture framework the enterprise adopted to guide engineering leaders and their teams toward sound software architecture.',
+						'Shipped the ASPIRE dashboard application — leaders drill through per-team and per-app architecture "scores" — first as an Astro + React app, later converted to a Tanstack Router + React SPA.',
+						'Built data pipelines, AI tooling, and a Node.js backend for ASPIRE, migrating rule enforcement onto Open Policy Agent (OPA) with Rego policies.',
 					],
 				},
 				{
@@ -171,8 +176,10 @@ export const RESUME = {
 					dates: 'July 2023 – May 2024',
 					location: 'Plano, TX',
 					bullets: [
-						'Re-architected Developer Navigator, the internal application developers use to move through the SDLC — build pipelines, and manage assets and capabilities — onto a micro-frontend architecture.',
-						'Cultivated a thriving frontend development team around the platform of more than 15 frontend devs that worked closely together to build a cohesive and fun experience.',
+						'Re-architected Developer Navigator from a hand-rolled HTMLElement shell loading outdated, copy-pasted-and-built Angular micro-frontends into a fully innersourced platform any team at Capital One could contribute a micro-frontend to.',
+						"Built the Lit Element app shell driving the core Developer Navigator experience, and led the core team that defined the platform's governance model.",
+						'Cultivated a thriving frontend development team of 15+ engineers building a cohesive, enjoyable developer experience around the platform.',
+						'Led design reviews and reviewed thousands of PRs, holding a highly visible, org-wide product to a quality-over-quantity bar.',
 					],
 				},
 				{
@@ -181,9 +188,9 @@ export const RESUME = {
 					dates: 'July 2019 – July 2023',
 					location: 'Plano, TX',
 					bullets: [
-						'Lead frontend engineer for auto refinance, architecting the one-agent platform used across the refi business.',
+						'Led frontend engineering for auto refinance, building the internal Angular application agents use to fund refi loans (the "one-agent" platform).',
 						'Mentored engineers and partnered directly with Experience Design and Product Management to ship agent-facing experiences.',
-						'Built micro-frontends with Lit Element and custom web components, plus Angular, and owned the shared component library that every developer treated as the single source of truth.',
+						'Built and owned the shared component library used by that application and its surrounding micro-frontends — the single source of truth every developer on the team built against.',
 						'First engineer at Capital One to ship WebAssembly + Web Workers in a customer-facing production frontend.',
 						'Organized and hosted the internal Refi Hackathon — 40+ patents produced in the last year alone; submitted 4 patents personally, with one successfully filed with the US Patent Office, and several hackathon innovations shipped to production.',
 						'Hosted internal dev talks to audiences of 200+ on WebAssembly, Web/Service Workers, Lighthouse performance analysis, CSS Grid vs. Flexbox, Lit Element, Storybook, Ionic, Angular, React, Jasmine/Jest, Cypress, and Gitflow branching strategy.',
