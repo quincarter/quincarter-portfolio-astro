@@ -1,0 +1,133 @@
+---
+import Base from '@/templates/Base.astro';
+import { RESUME } from '@/data/resume';
+import '../styles/resume.css';
+
+const title = `${RESUME.name} — Résumé`;
+const description = `Résumé for ${RESUME.name}, ${RESUME.title}.`;
+
+const allRoles = RESUME.experience.flatMap((company) => company.roles);
+---
+
+<Base head={{ title, description }}>
+	<script is:inline>
+		// Re-applies a previously chosen light theme before the paper paints,
+		// so returning visitors don't see a flash of the dark default. Dark
+		// needs no attribute - it's the CSS default in resume.css - so there's
+		// nothing to do unless "light" was explicitly stored.
+		if (localStorage.getItem('resume-theme') === 'light') {
+			document.documentElement.dataset.resumeTheme = 'light';
+		}
+	</script>
+
+	<div class="resume-page-shell px-4 py-10 md:py-14">
+		<resume-toolbar class="no-print"></resume-toolbar>
+
+		<div class="resume-paper mx-auto flex max-w-[850px] flex-col gap-7 rounded-2xl p-8 transition-colors duration-200 md:p-12">
+			<resume-header>
+				<span slot="name">{RESUME.name}</span>
+				<span slot="title">{RESUME.title}</span>
+				<span slot="tagline">{RESUME.tagline}</span>
+				<span slot="location">{RESUME.location}</span>
+				{
+					RESUME.contact.map((c) => (
+						<a
+							slot="contact"
+							href={c.href}
+							target={c.icon === 'email' ? undefined : '_blank'}
+							rel={c.icon === 'email' ? undefined : 'noopener'}
+						>
+							{c.label}
+						</a>
+					))
+				}
+			</resume-header>
+
+			<resume-section>
+				<span slot="heading">Summary</span>
+				<p class="text-[13.5px] leading-relaxed text-[var(--resume-ink-soft)]">{RESUME.summary}</p>
+			</resume-section>
+
+			<resume-section>
+				<span slot="heading">Experience</span>
+				{
+					allRoles.map((role) => (
+						<resume-entry>
+							<span slot="title">{role.title}</span>
+							{role.orgUrl ? (
+								<a slot="org" href={role.orgUrl} target="_blank" rel="noopener">
+									{role.org}
+								</a>
+							) : (
+								<span slot="org">{role.org}</span>
+							)}
+							<span slot="dates">{role.dates}</span>
+							{role.location && <span slot="location">{role.location}</span>}
+							<ul>
+								{role.bullets.map((bullet) => (
+									<li>{bullet}</li>
+								))}
+							</ul>
+						</resume-entry>
+					))
+				}
+			</resume-section>
+
+			<resume-section>
+				<span slot="heading">Skills</span>
+				<div class="grid gap-x-8 gap-y-4 sm:grid-cols-2">
+					{
+						RESUME.skillGroups.map((group) => (
+							<resume-skill-group>
+								<span slot="category">{group.category}</span>
+								{group.skills.map((skill) => (
+									<span>{skill}</span>
+								))}
+							</resume-skill-group>
+						))
+					}
+				</div>
+			</resume-section>
+
+			<resume-section>
+				<span slot="heading">Earlier Experience</span>
+				{
+					RESUME.earlierExperience.map((role) => (
+						<resume-earlier-role>
+							<span slot="org">{role.org}</span>
+							<span slot="title">{role.title}</span>
+							<span slot="dates">{role.dates}</span>
+							{role.note}
+						</resume-earlier-role>
+					))
+				}
+			</resume-section>
+
+			<resume-section>
+				<span slot="heading">Honors & Awards</span>
+				<ul class="grid list-disc gap-x-8 gap-y-1.5 pl-4 text-[13px] text-[var(--resume-ink-soft)] sm:grid-cols-2">
+					{RESUME.honors.map((honor) => <li>{honor}</li>)}
+				</ul>
+			</resume-section>
+
+			<resume-section>
+				<span slot="heading">Education</span>
+				{
+					RESUME.education.map((edu) => (
+						<resume-entry>
+							<span slot="title">{edu.credential}</span>
+							<span slot="org">{edu.school}</span>
+							<span slot="dates">{edu.dates}</span>
+						</resume-entry>
+					))
+				}
+			</resume-section>
+
+			<p class="no-print mt-2 text-right text-[11px] text-[var(--resume-ink-faint)]">Updated {RESUME.updated}</p>
+		</div>
+	</div>
+</Base>
+
+<script>
+	import '../components/resume/register';
+</script>

@@ -1,0 +1,89 @@
+.resume-paper {
+	/* Dark theme (default) - matches the rest of quincarter.com. */
+	--resume-paper-bg: #1e293b;
+	--resume-paper-text: #e2e8f0;
+	--resume-paper-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.6);
+	--resume-ink: #e2e8f0;
+	--resume-ink-soft: #cbd5e1;
+	--resume-ink-faint: #94a3b8;
+	--resume-accent: #38bdf8;
+	--resume-accent-soft: rgba(56, 189, 248, 0.16);
+	--resume-border: #334155;
+
+	background: var(--resume-paper-bg);
+	color: var(--resume-paper-text);
+	box-shadow: var(--resume-paper-shadow);
+	border: 1px solid var(--resume-border);
+}
+
+/* Light theme - a plain sheet of paper. Toggled via `resume-theme-toggle`,
+   which sets this attribute on <html> and remembers the choice in
+   localStorage (see ResumeThemeToggle.ts). */
+:root[data-resume-theme="light"] .resume-paper {
+	--resume-paper-bg: #ffffff;
+	--resume-paper-text: #1e293b;
+	--resume-paper-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.45);
+	--resume-ink: #1e293b;
+	--resume-ink-soft: #475569;
+	--resume-ink-faint: #64748b;
+	--resume-accent: #0369a1;
+	--resume-accent-soft: #e0f2fe;
+	--resume-border: #e2e8f0;
+
+	border-color: transparent;
+}
+
+@media print {
+	/* astro-boilerplate-components' Navbar/Footer both render as an
+	   unlabeled <div class="mx-auto max-w-screen-lg ..."> - there's no
+	   <nav>/<footer> tag or distinguishing class to target them by, so
+	   hide everything on <body> except the resume itself instead. */
+	body > *:not(.resume-page-shell) {
+		display: none !important;
+	}
+
+	.no-print {
+		display: none !important;
+	}
+
+	html,
+	body {
+		background: #fff !important;
+	}
+
+	.resume-page-shell {
+		padding: 0 !important;
+	}
+
+	/* Always print the light "paper" theme, regardless of the on-screen
+	   toggle - nobody wants to burn ink printing a dark background. */
+	.resume-paper {
+		--resume-paper-bg: #ffffff;
+		--resume-paper-text: #1e293b;
+		--resume-ink: #1e293b;
+		--resume-ink-soft: #475569;
+		--resume-ink-faint: #64748b;
+		--resume-accent: #0369a1;
+		--resume-accent-soft: #e0f2fe;
+		--resume-border: #e2e8f0;
+
+		background: #fff !important;
+		color: #1e293b !important;
+		box-shadow: none !important;
+		border: none !important;
+		border-radius: 0 !important;
+		max-width: none !important;
+		/* Real print margin, drawn by us instead of @page below - see why. */
+		padding: 0.6in !important;
+	}
+
+	@page {
+		size: letter;
+		/* Zero, not the visual margin above: a non-zero @page margin gives
+		   Chrome's print header/footer (date, title, URL, page number) room
+		   to draw itself on every page. With no margin box to put them in,
+		   it omits them, and .resume-paper's own padding above recreates
+		   the visual margin under our control instead. */
+		margin: 0;
+	}
+}
