@@ -36,10 +36,23 @@ export interface ResumeEarlierRole {
 	note: string;
 }
 
+export interface ResumeTalk {
+	venue: string;
+	title: string;
+	dates: string;
+	note?: string;
+}
+
+export interface ResumeSpeaking {
+	intro: string;
+	talks: ResumeTalk[];
+	writingNote: string;
+}
+
 export const RESUME = {
 	name: 'Quin Carter',
 	title: 'Lead Software Engineer at Capital One',
-	tagline: 'Frontend Architecture · Web Components · Speaker',
+	tagline: 'Developer Experience · Frontend Architecture · Speaker',
 	location: 'Greater Richmond Region, VA',
 	updated: 'September 2026',
 	contact: [
@@ -61,12 +74,21 @@ export const RESUME = {
 		},
 	] satisfies ResumeContactLink[],
 
-	summary: `Senior software engineer and full-stack web developer specializing in highly scalable, well-crafted user experiences. I build with Lit Element, Angular, React, and Vue on the frontend, and Node/Express or Java/Spring Boot for APIs and BFFs, most of it inside microservice-architected, multi-layer distributed systems. I lead with the customer's experience first, work closely with design, and care deeply about application architecture — a system that isn't planned properly becomes a system nobody can maintain. Recent focus has been WebAssembly and Web Workers in production micro-frontends, including compiling C++ to a WASM target so the browser gets desktop-grade performance.`,
+	summary: `Lead Software Engineer at Capital One with a track record of leading teams across multiple lines of business — from Financial Services, to standing up a brand-new team and architecture practice in Card Tech (adopted enterprise-wide as ASPIRE), to my current work in Developer Experience. I now build the standards Capital One writes software against: language tooling, DevContainers, and Standard Development Environments, serving as the JavaScript/TypeScript tech lead for our language excellence organization alongside counterparts in Python, Go, and Java. My background is deep in frontend architecture — Lit Element, Angular, React, Vue, and micro-frontends — including being the first engineer at Capital One to ship WebAssembly and Web Workers in a customer-facing production frontend. I care deeply about application architecture: a system that isn't planned properly becomes a system nobody can maintain.`,
 
 	skillGroups: [
 		{
 			category: 'Languages',
-			skills: ['JavaScript', 'TypeScript', 'Java', 'PHP', 'C++', 'Objective-C'],
+			skills: [
+				'JavaScript',
+				'TypeScript',
+				'Java',
+				'Python',
+				'Go',
+				'PHP',
+				'C++',
+				'Objective-C',
+			],
 		},
 		{
 			category: 'Frontend',
@@ -100,6 +122,8 @@ export const RESUME = {
 			category: 'Practices & Tooling',
 			skills: [
 				'Micro-frontends',
+				'DevContainers',
+				'Standard Development Environments',
 				'CI/CD (Jenkins, Bamboo, GitLab CI)',
 				'Gitflow',
 				'Docker',
@@ -123,16 +147,32 @@ export const RESUME = {
 			roles: [
 				{
 					org: 'Capital One',
-					title: 'Lead Software Engineer',
-					dates: 'July 2023 – Present',
+					title: 'Lead Software Engineer — Developer Experience',
+					dates: 'July 2026 – Present',
 					location: 'Richmond, VA',
 					bullets: [
-						'Lead frontend engineer for auto refinance, architecting the one-agent platform used across the refi business.',
-						'Mentor engineers and partner directly with Experience Design and Product Management to ship agent-facing experiences.',
-						'Build micro-frontends with Lit Element and custom web components, plus Angular, and own the shared component library that every developer treats as the single source of truth.',
-						'First engineer at Capital One to ship WebAssembly + Web Workers in a customer-facing production frontend.',
-						'Organize and host the internal Refi Hackathon — 40+ patents produced in the last year alone; submitted 4 patents personally, with one successfully filed with the US Patent Office, and several hackathon innovations shipped to production.',
-						'Hosted internal dev talks to audiences of 200+ on WebAssembly, Web/Service Workers, Lighthouse performance analysis, CSS Grid vs. Flexbox, Lit Element, Storybook, Ionic, Angular, React, Jasmine/Jest, Cypress, and Gitflow branching strategy.',
+						'Building standards for development at Capital One — language tooling, DevContainers, and Standard Development Environments — within Developer Experience / Collaborative Code Foundations / EP Tech.',
+						'Serve as the JavaScript/TypeScript tech lead for the language excellence organization, working alongside counterparts covering Python, Go, and Java.',
+					],
+				},
+				{
+					org: 'Capital One',
+					title: 'Lead Software Engineer — Card Tech Architecture',
+					dates: 'May 2024 – July 2026',
+					location: 'Richmond, VA',
+					bullets: [
+						'Led a brand-new team built from the ground up, standing up both the team and its architectural practice from nothing.',
+						'Built an application and overall architecture that the enterprise adopted as ASPIRE, a standard methodology for building sound architecture across Capital One.',
+					],
+				},
+				{
+					org: 'Capital One',
+					title: 'Lead Software Engineer — Financial Services',
+					dates: 'July 2023 – May 2024',
+					location: 'Richmond, VA',
+					bullets: [
+						'Re-architected Developer Navigator, the internal application developers use to move through the SDLC — build pipelines, and manage assets and capabilities — onto a micro-frontend architecture.',
+						'Cultivated a thriving frontend development team around the platform.',
 					],
 				},
 				{
@@ -141,7 +181,12 @@ export const RESUME = {
 					dates: 'July 2019 – July 2023',
 					location: 'Plano, TX',
 					bullets: [
-						'Same platform ownership as above prior to promotion to Lead — frontend architecture, mentorship, and the shared component library for the agent platform.',
+						'Lead frontend engineer for auto refinance, architecting the one-agent platform used across the refi business.',
+						'Mentored engineers and partnered directly with Experience Design and Product Management to ship agent-facing experiences.',
+						'Built micro-frontends with Lit Element and custom web components, plus Angular, and owned the shared component library that every developer treated as the single source of truth.',
+						'First engineer at Capital One to ship WebAssembly + Web Workers in a customer-facing production frontend.',
+						'Organized and hosted the internal Refi Hackathon — 40+ patents produced in the last year alone; submitted 4 patents personally, with one successfully filed with the US Patent Office, and several hackathon innovations shipped to production.',
+						'Hosted internal dev talks to audiences of 200+ on WebAssembly, Web/Service Workers, Lighthouse performance analysis, CSS Grid vs. Flexbox, Lit Element, Storybook, Ionic, Angular, React, Jasmine/Jest, Cypress, and Gitflow branching strategy.',
 					],
 				},
 			],
@@ -232,6 +277,38 @@ export const RESUME = {
 			note: 'Tier 1/2 support for POS software and hardware (ISS45, IBM 4690) and Retalix fuel systems; rebuilt Windows and IBM servers from the ground up.',
 		},
 	] satisfies ResumeEarlierRole[],
+
+	speaking: {
+		intro:
+			"Regular speaker at Capital One's internal Frontend Community (2+ talks a year since joining) and large-scale internal forums like Async Live and SECON, plus external conferences and meetups.",
+		talks: [
+			{
+				title: 'Building Apps with Lit Element in 2026',
+				venue: 'Capital One Async Live · RVA.js Meetup',
+				dates: 'April & August 2026',
+				note: 'App shell architecture, routing, dependency injection, async state, and signals for real Lit applications.',
+			},
+			{
+				title: 'Expressing Yourself with CSS in 2026',
+				venue: 'Capital One Frontend Community',
+				dates: 'February 2026',
+			},
+			{
+				title: 'WebAssembly (WASM)',
+				venue: 'RVA.js Meetup',
+				dates: 'June 2025',
+			},
+			{
+				title: 'The State of Workers in 2025',
+				venue:
+					'RVA.js Conference (Richmond) · Capital One Async Live · SECON · Frontend Community',
+				dates: '2025',
+				note: 'Given 4 times in 2025, originating as an external talk at RVA.js Conference before three internal deliveries.',
+			},
+		],
+		writingNote:
+			'Numerous technical articles on quincarter.com and on Medium (@quincarter).',
+	} satisfies ResumeSpeaking,
 
 	education: [
 		{
