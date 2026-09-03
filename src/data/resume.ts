@@ -169,10 +169,10 @@ export const RESUME = {
 					org: 'Capital One',
 					title: 'Lead Software Engineer — Financial Services',
 					dates: 'July 2023 – May 2024',
-					location: 'Richmond, VA',
+					location: 'Plano, TX',
 					bullets: [
 						'Re-architected Developer Navigator, the internal application developers use to move through the SDLC — build pipelines, and manage assets and capabilities — onto a micro-frontend architecture.',
-						'Cultivated a thriving frontend development team around the platform.',
+						'Cultivated a thriving frontend development team around the platform of more than 15 frontend devs that worked closely together to build a cohesive and fun experience.',
 					],
 				},
 				{
