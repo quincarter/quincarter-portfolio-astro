@@ -93,14 +93,32 @@ const allRoles = RESUME.experience.flatMap((company) => company.roles);
 				<span slot="heading">Earlier Experience</span>
 				{
 					RESUME.earlierExperience.map((role) => (
-						<resume-earlier-role>
+						<resume-compact-entry>
 							<span slot="org">{role.org}</span>
 							<span slot="title">{role.title}</span>
 							<span slot="dates">{role.dates}</span>
 							{role.note}
-						</resume-earlier-role>
+						</resume-compact-entry>
 					))
 				}
+			</resume-section>
+
+			<resume-section>
+				<span slot="heading">Speaking & Publications</span>
+				<p class="text-[13px] leading-relaxed text-[var(--resume-ink-soft)]">{RESUME.speaking.intro}</p>
+				{
+					RESUME.speaking.talks.map((talk) => (
+						<resume-compact-entry>
+							<span slot="org">{talk.venue}</span>
+							<span slot="title">{talk.title}</span>
+							<span slot="dates">{talk.dates}</span>
+							{talk.note}
+						</resume-compact-entry>
+					))
+				}
+				<p class="text-[13px] leading-relaxed text-[var(--resume-ink-soft)]">
+					{RESUME.speaking.writingNote}
+				</p>
 			</resume-section>
 
 			<resume-section>

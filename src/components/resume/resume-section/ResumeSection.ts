@@ -12,7 +12,7 @@ import { ResumeSectionStyles } from './resume-section.styles';
  * a section like Experience is routinely taller than a single printed
  * page, so it must be allowed to break across pages. Forcing it to stay
  * whole pushes the entire section onto the next page and leaves the
- * previous one mostly blank - `resume-entry` and `resume-earlier-role`
+ * previous one mostly blank - `resume-entry` and `resume-compact-entry`
  * are where "don't split this" actually belongs, since those are small
  * enough to always fit.
  * ## Usage

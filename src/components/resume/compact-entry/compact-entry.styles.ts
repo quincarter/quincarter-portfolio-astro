@@ -1,6 +1,6 @@
 import { css } from 'lit';
 
-export const EarlierRoleStyles = css`
+export const CompactEntryStyles = css`
 	:host {
 		display: block;
 	}
