@@ -149,4 +149,12 @@ export const CATEGORY_DATA: CategoryData = {
 		name: 'Tauri',
 		color: ColorTags.TEAL,
 	},
+	phaser: {
+		name: 'Phaser 4',
+		color: ColorTags.AMBER,
+	},
+	gameDev: {
+		name: 'Game Development',
+		color: ColorTags.RED,
+	},
 };
