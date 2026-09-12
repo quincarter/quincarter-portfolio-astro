@@ -24,6 +24,21 @@ export const PROJECT_DATA: Project[] = [
 		],
 	},
 	{
+		name: 'Marvel Champions: Digital Edition (Work in Progress)',
+		description: `A digital, rules-accurate implementation of Marvel Champions: The Card Game, built with Phaser 4, TypeScript, and a custom deterministic rules engine. Architected rules-engine-first as a monorepo featuring a headless state machine that strictly adheres to the official Fantasy Flight Games Rules Reference Guide (RRG), completely decoupled from presentation so Phaser acts as a pure view. Actively in development as a work in progress, recently committed after solidifying the core rules engine.`,
+		image: {
+			src: '/assets/images/github-icon.png',
+			alt: 'github logo',
+		},
+		link: 'https://github.com/quincarter/marvel-champions-digital-game',
+		category: [
+			cat.gameDev as Category,
+			cat.phaser as Category,
+			cat.typeScript as Category,
+			cat.monorepo as Category,
+		],
+	},
+	{
 		name: 'dnd-syncer',
 		description: `A Focus Mode / Do Not Disturb syncer between an Android phone and its associated computers, keeping DND status in lockstep across devices. Built as a universal desktop companion app (Windows, macOS, and Linux) paired with an Android app. This is my first Rust, Kotlin, and Tauri project, and it's been a fun one - it ties together everything I know from years of web development and finally puts it to work gluing real hardware together with a seamless UI and backend.`,
 		image: {
