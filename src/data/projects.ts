@@ -24,6 +24,22 @@ export const PROJECT_DATA: Project[] = [
 		],
 	},
 	{
+		name: 'Claude Usage & Peak Time Tracking for macOS (Open Source)',
+		description: `A native macOS menu bar app and WidgetKit desktop suite built with Swift 6 and SwiftUI for tracking Claude usage across multiple accounts and monitoring Claude's global peak traffic hours in real time. Features live synchronization of 5-hour rolling limits and 7-day weekly volume caps with clock-based reset times, regional timezone peak horizon tracking, encrypted Keychain storage, and multi-size desktop widgets.`,
+		image: {
+			src: '/assets/images/github-icon.png',
+			alt: 'github logo',
+		},
+		link: 'https://github.com/quincarter/ClaudeUsage-MacOS-App-Widget',
+		category: [
+			cat.swift as Category,
+			cat.swiftUi as Category,
+			cat.macOs as Category,
+			cat.widgetKit as Category,
+			cat.openSource as Category,
+		],
+	},
+	{
 		name: 'Marvel Champions: Digital Edition (Work in Progress)',
 		description: `A digital, rules-accurate implementation of Marvel Champions: The Card Game, built with Phaser 4, TypeScript, and a custom deterministic rules engine. Architected rules-engine-first as a monorepo featuring a headless state machine that strictly adheres to the official Fantasy Flight Games Rules Reference Guide (RRG), completely decoupled from presentation so Phaser acts as a pure view. Actively in development as a work in progress, recently committed after solidifying the core rules engine.`,
 		image: {
