@@ -157,4 +157,20 @@ export const CATEGORY_DATA: CategoryData = {
 		name: 'Game Development',
 		color: ColorTags.RED,
 	},
+	swift: {
+		name: 'Swift',
+		color: ColorTags.ORANGE,
+	},
+	swiftUi: {
+		name: 'SwiftUI',
+		color: ColorTags.SKY,
+	},
+	macOs: {
+		name: 'macOS',
+		color: ColorTags.INDIGO,
+	},
+	widgetKit: {
+		name: 'WidgetKit',
+		color: ColorTags.PURPLE,
+	},
 };
