@@ -27,8 +27,8 @@ export const PROJECT_DATA: Project[] = [
 		name: 'Claude Usage & Peak Time Tracking for macOS (Open Source)',
 		description: `A native macOS menu bar app and WidgetKit desktop suite built with Swift 6 and SwiftUI for tracking Claude usage across multiple accounts and monitoring Claude's global peak traffic hours in real time. Features live synchronization of 5-hour rolling limits and 7-day weekly volume caps with clock-based reset times, regional timezone peak horizon tracking, encrypted Keychain storage, and multi-size desktop widgets.`,
 		image: {
-			src: '/assets/images/github-icon.png',
-			alt: 'github logo',
+			src: '/assets/images/ClaudeUsageIcon.png',
+			alt: 'Claude Usage icon',
 		},
 		link: 'https://github.com/quincarter/ClaudeUsage-MacOS-App-Widget',
 		category: [
